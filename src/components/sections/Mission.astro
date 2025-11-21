@@ -1,0 +1,231 @@
+---
+import ArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import PlayerPause from "@tabler/icons/outline/player-pause.svg";
+
+import { Image } from "astro:assets";
+import MissionPlaceholder1 from "src/assets/mission-placeholder-1.avif";
+import MissionPlaceholder2 from "src/assets/mission-placeholder-2.avif";
+import MissionPlaceholder3 from "src/assets/mission-placeholder-3.avif";
+import MissionPlaceholder4 from "src/assets/mission-placeholder-4.mp4";
+---
+
+<section class="mission-section space-y-4">
+  <div class="mission-text">
+    <h1 class="text-4xl md:text-6xl py-6 font-sans">
+      Doloribus ratione iste ex perferendis laboriosam.
+    </h1>
+    <p class="text-base text-muted-foreground">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ratione
+      iste ex perferendis laboriosam enim numquam soluta magni, quasi minus? Et
+      minima eum laboriosam distinctio recusandae qui harum sunt repellat!
+    </p>
+  </div>
+  <div
+    class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[2fr_3fr] grid-rows-[auto_auto_auto_auto] md:grid-rows-[auto_auto_auto] lg:grid-rows-[auto_auto] xl:grid-rows-[auto_auto] gap-4"
+  >
+    <div
+      class="mission-card flex p-4 md:p-6 rounded-lg h-full w-full gap-x-4 box-border overflow-hidden relative bg-secondary min-h-[350px] md:min-h-[400px] lg:min-h-[500px]"
+    >
+      <Image
+        alt="laboriosam distinctio"
+        decoding="async"
+        loading="lazy"
+        src={MissionPlaceholder1}
+        width="352"
+        class="absolute w-full h-full top-0 left-0 object-cover"
+      />
+      <div class="w-full relative flex flex-col text-char-50 z-10 text-white">
+        <h3 class="text-sm md:text-base leading-snug font-normal">
+          Ex perferendis laboriosam enim numquam soluta
+        </h3>
+        <h1 class="m-0 p-0 text-4xl leading-tight md:text-6xl md:leading-tight">
+          laboriosam
+        </h1>
+      </div>
+    </div>
+
+    <div
+      class="flex flex-col md:grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr] grid-rows-[auto_auto_auto] md:grid-rows-[auto_auto_auto] lg:grid-rows-[auto_auto] xl:grid-rows-[auto_auto] gap-4"
+    >
+      <div
+        class="mission-card flex p-4 md:p-6 justify-center items-center rounded-lg h-full w-full gap-x-4 box-border overflow-hidden relative bg-secondary text-secondary-foreground min-h-[120px] md:min-h-[120px]"
+      >
+        <div class="w-full text-center relative flex flex-col">
+          <h3
+            class="m-0 p-0 text-4xl leading-tight md:text-6xl md:leading-tight"
+          >
+            1K+
+          </h3>
+          <p
+            class="m-0 p-0 text-base md:text-lg leading-snug font-normal whitespace-pre-line"
+          >
+            5 quas delectus
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="mission-card flex p-4 md:p-6 items-end rounded-lg h-full w-full gap-x-4 box-border overflow-hidden relative bg-secondary min-h-[180px] md:min-h-[180px]"
+      >
+        <Image
+          alt="Perfect Pot cookware"
+          decoding="async"
+          loading="lazy"
+          src={MissionPlaceholder2}
+          width="352"
+          class="absolute w-full h-full top-0 left-0 object-cover"
+        />
+        <div
+          class="w-full relative flex flex-col text-secondary-foreground z-10"
+        >
+        </div>
+      </div>
+
+      <div
+        class="mission-card flex p-4 md:p-6 justify-center items-center rounded-lg h-full w-full gap-x-4 box-border overflow-hidden relative bg-secondary text-secondary-foreground min-h-[120px] md:min-h-[120px]"
+      >
+        <div class="w-full text-center relative flex flex-col">
+          <h3
+            class="m-0 p-0 text-4xl leading-tight md:text-6xl md:leading-tight"
+          >
+            100+
+          </h3>
+          <p
+            class="m-0 p-0 text-base md:text-lg leading-snug font-normal whitespace-pre-line"
+          >
+            culpa omni
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="mission-card flex p-4 md:p-6 items-end rounded-lg h-full w-full gap-x-4 box-border overflow-hidden relative col-span-3 hidden lg:flex bg-secondary min-h-[250px]"
+      >
+        <video
+          autoplay
+          class="absolute w-full h-full top-0 left-0 object-cover"
+          loop
+          muted
+          playsinline
+          poster=""
+        >
+          <source src={MissionPlaceholder4} type="video/mp4" />
+        </video>
+        <div class="w-full relative flex flex-col text-char-50 z-10"></div>
+        <div
+          class="relative ml-auto flex flex-col justify-between items-end h-full z-10"
+        >
+          <button
+            class="block border-0 outline-none bg-transparent cursor-pointer p-0"
+          >
+            <PlayerPause />
+            <span class="sr-only">pause</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mission-card flex p-4 md:p-6 items-end rounded-lg h-full w-full gap-x-4 box-border overflow-hidden relative md:col-span-2 lg:hidden bg-secondary min-h-[250px] md:min-h-[250px]"
+    >
+      <video
+        autoplay
+        class="absolute w-full h-full top-0 left-0 object-cover"
+        loop
+        muted
+        playsinline
+        poster=""
+      >
+        <source src={MissionPlaceholder4} type="video/mp4" />
+      </video>
+      <div class="w-full relative flex flex-col text-char-50 z-10"></div>
+      <div
+        class="relative ml-auto flex flex-col justify-between items-end h-full z-10"
+      >
+        <div
+          class="relative ml-auto flex flex-col justify-between items-end h-full z-10"
+        >
+          <button
+            class="block border-0 outline-none bg-transparent cursor-pointer p-0"
+          >
+            <PlayerPause />
+            <span class="sr-only">pause</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mission-card flex p-4 md:p-6 items-center rounded-lg h-full w-full gap-x-4 box-border overflow-hidden relative md:col-span-2 bg-secondary min-h-[300px] md:min-h-[280px]"
+    >
+      <Image
+        alt="quas delectus culpa omni"
+        decoding="async"
+        loading="lazy"
+        src={MissionPlaceholder3}
+        width="352"
+        class="absolute w-full h-full top-0 left-0 object-cover object-[0%_93%]"
+      />
+      <div class="w-1/2 relative flex flex-col z-10 pr-4 text-white">
+        <h3 class="m-0 p-0 text-sm md:text-base leading-snug font-normal">
+          Quas delectus culpa omni
+        </h3>
+        <h1
+          class="m-0 p-0 text-2xl font-normal leading-normal md:text-4xl md:font-normal md:leading-normal"
+        >
+          Enim numquam soluta magni
+        </h1>
+        <p class="m-0 p-0 text-base md:text-lg leading-snug font-normal">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam amet
+          rerum repellat reiciendis quas delectus culpa omnis sed libero maxime?
+          Rem molestias odio, earum consectetur sunt ex neque iusto tenetur.
+        </p>
+      </div>
+      <div
+        class="relative ml-auto flex flex-col justify-between items-end h-full z-10"
+      >
+        <button
+          class="block self-end bg-primary text-primary-foreground hover:bg-secondary hover:text-secondary-foreground py-2 px-4 mt-auto"
+        >
+          <ArrowRight />
+          <span class="sr-only">Click for more information</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".mission-section",
+        start: "top 70%",
+        end: "top 40%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.from(".mission-text", {
+      autoAlpha: 0,
+      y: 40,
+      duration: 0.8,
+      ease: "power2.out",
+    }).from(
+      ".mission-card",
+      {
+        autoAlpha: 0,
+        y: 40,
+        stagger: 0.15,
+        duration: 0.6,
+        ease: "power2.out",
+      },
+      "-=0.5"
+    );
+  }
+</script>

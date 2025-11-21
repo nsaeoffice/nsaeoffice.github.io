@@ -1,0 +1,57 @@
+---
+import { getCollection } from "astro:content";
+import ClickableCard from "../astro/Card/ClickableCard.astro";
+import BlogFeaturedCard from "../astro/Card/BlogFeaturedCard.astro";
+import BlogCard from "../astro/Card/BlogCard.astro";
+import { Image } from "astro:assets";
+
+const allPublishedPosts = (
+  await getCollection("blog", ({ data }) => {
+    return import.meta.env.MODE !== "production" || data.draft === false;
+  })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const featuredPosts = allPublishedPosts.filter(({ data }) => data.featured);
+const nonFeaturedPosts = allPublishedPosts.filter(({ data }) => !data.featured);
+---
+
+<section class="mt-4">
+  <h2 class="text-3xl mb-6">Featured Posts</h2>
+  <div class="grid grid-cols-2 gap-4">
+    <div class="col-span-2 lg:col-span-1 bg-secondary p-4 rounded-2xl">
+      {
+        featuredPosts.length > 0 && (
+          <div class="grid gap-8 lg:gap-10 xl:gap-18">
+            {featuredPosts.map((post) => (
+              <ClickableCard href={`/blog/${post.id}/`}>
+                <BlogFeaturedCard {...post} />
+              </ClickableCard>
+            ))}
+          </div>
+        )
+      }
+    </div>
+    <div class="col-span-2 lg:col-span-1">
+      {
+        nonFeaturedPosts.map((post) => (
+          <ClickableCard
+            class="group relative  border-b-2 border-dashed border-secondary-foreground last:border-b-0"
+            href={`/blog/${post.id}/`}
+          >
+            <BlogCard {...post} />
+            {post.data.heroImage && (
+              <Image
+                inferSize
+                class={
+                  "absolute top-0 h-full object-cover z-0 hidden group-hover:block opacity-70"
+                }
+                src={post.data.heroImage}
+                alt={post.data.heroImageAlt ?? ""}
+              />
+            )}
+          </ClickableCard>
+        ))
+      }
+    </div>
+  </div>
+</section>

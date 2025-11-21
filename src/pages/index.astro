@@ -6,6 +6,9 @@ import PageLayout from "@/layouts/PageLayout.astro";
 import Button from "@/components/astro/Button/Button.astro";
 import { Image } from "astro:assets";
 import Faq from "@/components/sections/Faq.astro";
+import BlogsArchive from "@/components/sections/BlogsArchive.astro";
+import BannersArchive from "@/components/sections/BannersArchive.astro";
+import Mission from "@/components/sections/Mission.astro";
 ---
 
 <PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
@@ -44,6 +47,9 @@ import Faq from "@/components/sections/Faq.astro";
       />
     </div>
   </section>
+  <Mission />
+  <BannersArchive />
+  <BlogsArchive />
 
   <Faq />
 </PageLayout>

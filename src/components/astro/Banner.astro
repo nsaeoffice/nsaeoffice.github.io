@@ -1,0 +1,140 @@
+---
+import { getImage } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import Button from "./Button/Button.astro";
+import ArrowUpRight from "@tabler/icons/outline/arrow-up-right.svg";
+
+type Props = {
+  banner: CollectionEntry<"banners">;
+};
+const { banner } = Astro.props;
+
+const optimizedImage = await getImage({ src: banner.data.backgroundImage });
+const gradientOverlay =
+  banner.data.contentPosition === "left"
+    ? "linear-gradient(to right, rgba(0,0,0,0.75) 20%, transparent 80%)"
+    : "linear-gradient(to left, rgba(0,0,0,0.75) 20%, transparent 80%)";
+
+const contentBoxClasses = [
+  "flex",
+  "flex-col",
+  "max-w-4xl",
+  "p-8",
+  banner.data.contentPosition === "left"
+    ? "mr-auto items-start text-left"
+    : "ml-auto items-end text-right",
+];
+---
+
+<section class="pt-4">
+  <div
+    class="relative min-h-[300px] bg-cover bg-center text-white font-sans flex items-center"
+    style={`background-image: ${gradientOverlay}, url(${optimizedImage.src})`}
+  >
+    <div class:list={contentBoxClasses}>
+      {
+        banner.data.variant === "countdown" && banner.data.countdownTarget && (
+          <div
+            class="countdown flex items-start gap-x-2 text-3xl  font-bold tracking-wider my-2 border-b-2 border-foreground pb-2"
+            data-target-date={banner.data.countdownTarget}
+          />
+        )
+      }
+      {
+        banner.data.subtitle && (
+          <p class="text-sm uppercase tracking-wider">{banner.data.subtitle}</p>
+        )
+      }
+
+      <h2
+        class="text-4xl lg:text-6xl font-extrabold uppercase leading-tight my-2"
+      >
+        {banner.data.title}
+      </h2>
+      {
+        banner.data.description && (
+          <p class="text-base  mb-4 max-w-prose">{banner.data.description}</p>
+        )
+      }
+      <Button href={banner.data.buttonLink} class="rounded-full">
+        {banner.data.buttonText}
+        <ArrowUpRight class={"ml-2 size-4"} />
+      </Button>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initializeCountdowns() {
+    const countdownElements =
+      document.querySelectorAll<HTMLElement>(".countdown");
+    if (countdownElements.length === 0) return;
+
+    countdownElements.forEach((countdownElement) => {
+      const oldIntervalId = Number(countdownElement.dataset.intervalId);
+      if (oldIntervalId) {
+        clearInterval(oldIntervalId);
+      }
+
+      const targetDateStr = countdownElement.dataset.targetDate;
+      if (!targetDateStr) return;
+
+      const targetDate = new Date(targetDateStr).getTime();
+
+      const updateCountdown = () => {
+        const now = new Date().getTime();
+        const distance = targetDate - now;
+
+        if (distance < 0) {
+          countdownElement.innerHTML = "EVENT STARTED";
+          const intervalId = Number(countdownElement.dataset.intervalId);
+          if (intervalId) clearInterval(intervalId);
+          return;
+        }
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        countdownElement.innerHTML = `
+          <div class="text-center">
+            ${String(days).padStart(2, "0")}
+            <span class="block text-xs font-normal tracking-normal">Days</span>
+          </div>
+          <span>:</span>
+          <div class="text-center">
+            ${String(hours).padStart(2, "0")}
+            <span class="block text-xs font-normal tracking-normal">Hrs</span>
+          </div>
+          <span>:</span>
+          <div class="text-center">
+            ${String(minutes).padStart(2, "0")}
+            <span class="block text-xs font-normal tracking-normal">Min</span>
+          </div>
+          <span>:</span>
+          <div class="text-center">
+            ${String(seconds).padStart(2, "0")}
+            <span class="block text-xs font-normal tracking-normal">Sec</span>
+          </div>
+        `;
+      };
+
+      updateCountdown();
+
+      const newIntervalId = setInterval(updateCountdown, 1000);
+      countdownElement.dataset.intervalId = String(newIntervalId);
+    });
+  }
+
+  document.addEventListener("astro:page-load", initializeCountdowns);
+  document.addEventListener("DOMContentLoaded", initializeCountdowns);
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeCountdowns);
+  } else {
+    initializeCountdowns();
+  }
+</script>

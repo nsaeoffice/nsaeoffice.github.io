@@ -1,0 +1,20 @@
+---
+import { getCollection } from "astro:content";
+import Banner from "@/components/astro/Banner.astro";
+
+const allBanners = await getCollection("banners", ({ data }) => {
+  return (
+    import.meta.env.MODE !== "production" ||
+    data.draft === false ||
+    data.showBanner === false
+  );
+});
+---
+
+<section class="space-y-4">
+  {
+    allBanners.map((banner) => {
+      return <Banner banner={banner} />;
+    })
+  }
+</section>

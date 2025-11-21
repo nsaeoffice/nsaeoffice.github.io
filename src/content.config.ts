@@ -396,6 +396,32 @@ const contactPersonSchema = z.object({
   isPrimary: z.boolean().default(false),
 });
 
+const bannersCollection = defineCollection({
+  // Load Markdown and MDX files in the `src/content/banners/` directory.
+  loader: glob({ base: "./src/content/banners", pattern: "**/*.{md,mdx}" }),
+  // Type-check frontmatter using a schema
+  schema: ({ image }) =>
+    z
+      .object({
+        backgroundImage: image(),
+        contentPosition: z.enum(["left", "right"]).default("left"),
+        subtitle: z.string().optional(),
+        title: z.string(),
+        description: z.string().optional(),
+        buttonText: z.string(),
+        buttonLink: z.string().optional().default("#"),
+        buttonState: z.enum(["active", "inactive"]).default("active"),
+        showBanner: z.boolean().default(true),
+        countdownTarget: z.coerce.date().optional(),
+        draft: z.boolean().default(true),
+      })
+      .transform((data) => {
+        return {
+          ...data,
+          variant: data.countdownTarget ? "countdown" : "default",
+        };
+      }),
+});
 const eventsCollection = defineCollection({
   loader: glob({ base: "./src/content/events", pattern: "**/*.{md,mdx}" }),
   schema: ({ image }) =>
@@ -487,4 +513,5 @@ export const collections = {
   minutes: minutesCollection,
   events: eventsCollection,
   resources: resourcesCollection,
+  banners: bannersCollection,
 };
