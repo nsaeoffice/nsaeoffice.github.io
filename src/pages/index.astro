@@ -1,55 +1,106 @@
 ---
 import Badge from "@/components/astro/Badge.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-
 import PageLayout from "@/layouts/PageLayout.astro";
 import Button from "@/components/astro/Button/Button.astro";
 import { Image } from "astro:assets";
+
+// Sections
 import Faq from "@/components/sections/Faq.astro";
 import BlogsArchive from "@/components/sections/BlogsArchive.astro";
 import BannersArchive from "@/components/sections/BannersArchive.astro";
-import Mission from "@/components/sections/Mission.astro";
+import MissionBrief from "@/components/sections/MissionBrief.astro";
+import Memberships from "@/components/sections/Memberships.astro";
+
+// Icons
+import ArrowDown from "@tabler/icons/outline/arrow-down.svg";
 ---
 
 <PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <section
-    class="relative flex min-h-[70vh] items-center overflow-hidden px-6 py-20 md:px-12 md:py-32"
+    class="relative flex min-h-[85vh] items-center overflow-hidden px-6 py-20 md:px-12 md:py-32"
   >
-    <div class="relative z-20 flex max-w-4xl flex-col gap-6 md:gap-8">
-      <h2
-        class="text-[3.5rem] font-extralight leading-[1] text-white md:text-[6rem]"
+    <div class="absolute top-32 left-6 md:left-12 z-20 hidden md:block">
+      <span
+        class="font-mono text-xs text-white/60 tracking-widest uppercase vertical-lr"
       >
-        <Badge class={"z-20 absolute -top-6 right-1/2"} size={"sm"}>NSAE</Badge>
-        <span class="font-bold italic underline underline-offset-8"
-          >Engineering</span
-        >
-        Tomorrow’s Food & Environmental Systems
+        [ LAT: 27.7172° N ]
+      </span>
+    </div>
+
+    <div class="relative z-20 flex max-w-5xl flex-col gap-8 md:gap-10 mt-12">
+      <h2
+        class="font-sans text-[3.5rem] font-medium leading-[0.9] text-white md:text-[7rem] tracking-tighter"
+      >
+        <div class="relative inline-block">
+          <span
+            class="font-bold italic underline decoration-2 underline-offset-12 decoration-white/30"
+          >
+            Engineering
+          </span>
+          <Badge
+            class="absolute -top-8 -right-12 rotate-12 font-mono text-xs tracking-wide border-white/40"
+            size="sm"
+          >
+            EST. 2024
+          </Badge>
+        </div>
+        <br />
+        <span class="text-white/80">Tomorrow’s Food &</span>
+        <br />
+        <span class="text-white/80">Environmental Systems</span>
       </h2>
 
-      <p class="max-w-2xl text-lg text-white/75">
+      <p class="max-w-xl text-lg text-white/70 font-sans leading-relaxed">
         NSAE connects leading engineers, scientists, and students dedicated to
         creating practical solutions for real‑world agricultural challenges.
       </p>
 
-      <div class="mt-4">
-        <Button href={"/contact"} class={"rounded-2xl"}>Learn More</Button>
+      <div class="mt-4 flex items-center gap-6">
+        <Button
+          href={"/contact"}
+          class="rounded-full px-8 py-4 font-sans font-medium"
+        >
+          Join the Collective
+        </Button>
+
+        <a
+          href="#mission"
+          class="font-mono text-xs text-white/60 uppercase tracking-widest hover:text-white transition-colors flex items-center gap-2"
+        >
+          ( Explore ) <ArrowDown class="w-3 h-3" />
+        </a>
       </div>
     </div>
 
     <div class="absolute inset-0 z-10">
-      <div class="absolute inset-0 z-10 bg-black/60 rounded-2xl"></div>
+      <div
+        class="absolute rounded-2xl inset-0 z-20 bg-linear-to-r from-black/80 via-black/50 to-transparent"
+      >
+      </div>
+      <div class="absolute inset-0 z-10 bg-black/40 rounded-2xl"></div>
 
       <Image
         class="absolute inset-0 h-full w-full object-cover rounded-2xl"
-        alt=""
+        alt="Agricultural Engineering"
         inferSize
         src={"https://cdn.prod.website-files.com/68d7c06dc68ea0c551b91d3d/68dbbabca616d78487b19aa2_Home%20A.webp"}
       />
     </div>
+
+    <div
+      class="absolute bottom-10 right-12 z-20 hidden md:flex items-center gap-4"
+    >
+      <span class="font-mono text-xs text-white/50 uppercase"
+        >Scroll to explore</span
+      >
+      <div class="h-[1px] w-12 bg-white/30"></div>
+    </div>
   </section>
-  <Mission />
+
+  <MissionBrief />
+  <Memberships />
   <BannersArchive />
   <BlogsArchive />
-
   <Faq />
 </PageLayout>

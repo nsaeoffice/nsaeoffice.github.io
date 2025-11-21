@@ -33,70 +33,80 @@ const {
 ---
 
 <PageLayout title={title} description={`Minutes for ${title}`}>
-  <article class="py-8 space-y-8">
-    <header class="space-y-6 border-b pb-4">
-      <a
-        href="/minutes"
-        class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-      >
-        <ArrowLeft class="size-4" /> Back to All Minutes
-      </a>
-      <div class="space-y-2 text-center">
-        <div class="flex items-center gap-4 justify-center">
-          <Badge variant={"secondary"} size={"xs"} class={"capitalize"}>
-            <Point class="fill-destructive text-destructive w-4 h-4" />
+  <article class="py-8 space-y-10">
+    <a
+      href="/minutes"
+      class="px-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+    >
+      <ArrowLeft class="size-4" /> Back to All Minutes
+    </a>
+    <header class="space-y-8 border-b border-border/50 pb-8">
+      <div class="space-y-4 text-center">
+        <div class="flex flex-wrap items-center gap-4 justify-center">
+          <Badge
+            variant={"secondary"}
+            size={"xs"}
+            class={"font-mono text-xs uppercase tracking-wider flex items-center gap-1.5"}
+          >
+            <Point class="fill-destructive text-destructive w-2.5 h-2.5" />
             {type}
           </Badge>
           <span
-            class="flex flex-row gap-1 items-center text-muted-foreground text-sm"
+            class="flex flex-row gap-1.5 items-center font-mono text-xs text-muted-foreground uppercase tracking-wider"
           >
             <CalendarWeek class={"size-4"} />
             <FormattedDate date={pubDate} />
           </span>
           <span
-            class="flex flex-row gap-1 items-center text-muted-foreground text-sm"
+            class="flex flex-row gap-1.5 items-center font-mono text-xs text-muted-foreground uppercase tracking-wider"
           >
             <MapPin class={"size-4"} />
             {location}
           </span>
         </div>
         <h1
-          class="text-3xl md:text-4xl font-bold tracking-tight first-letter:capitalize"
+          class="font-sans text-3xl md:text-5xl font-medium tracking-tighter first-letter:capitalize"
         >
           {title}
         </h1>
       </div>
 
       <div
-        class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 bg-secondary p-4 rounded-lg text-sm"
+        class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 bg-secondary/50 p-6 rounded-xl border border-border/50"
       >
         {
           chairperson && (
             <div>
-              <span class="font-semibold block text-foreground">
-                Chairperson:
+              <span class="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-1.5">
+                Chairperson
               </span>
-              {chairperson}
+              <span class="font-sans font-medium text-lg text-foreground">
+                {chairperson}
+              </span>
             </div>
           )
         }
         {
           secretary && (
             <div>
-              <span class="font-semibold block text-foreground">
-                Secretary:
-              </span>{" "}
-              {secretary}
+              <span class="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-1.5">
+                Secretary
+              </span>
+              <span class="font-sans font-medium text-lg text-foreground">
+                {secretary}
+              </span>
             </div>
           )
         }
         {
           attendees && attendees.length > 0 && (
             <div class="md:col-span-2">
-              <span class="font-semibold block text-foreground">
-                Attendees:
+              <span class="font-mono text-xs text-muted-foreground uppercase tracking-wider block mb-1.5">
+                Attendees
               </span>
-              <span class="text-muted-foreground">{attendees.join(", ")}</span>
+              <span class="font-sans text-muted-foreground leading-relaxed">
+                {attendees.join(", ")}
+              </span>
             </div>
           )
         }
@@ -104,18 +114,20 @@ const {
 
       {
         downloadUrl && (
-          <a
-            href={downloadUrl}
-            target="_blank"
-            class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors text-sm font-medium"
-          >
-            <Download class="size-4" /> Download PDF
-          </a>
+          <div class="flex justify-center pt-2">
+            <a
+              href={downloadUrl}
+              target="_blank"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 transition-colors font-mono text-xs uppercase tracking-widest"
+            >
+              <Download class="size-4" /> Download PDF
+            </a>
+          </div>
         )
       }
     </header>
 
-    <div class="prose max-w-6xl mx-auto dark:prose-invert">
+    <div class="prose max-w-7xl mx-auto dark:prose-invert">
       <Content />
     </div>
   </article>

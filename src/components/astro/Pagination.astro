@@ -17,7 +17,10 @@ const lastPage = Number(url.last?.split("/").pop());
 
 {
   (url.prev || url.next) && (
-    <nav aria-label="Pagination">
+    <nav
+      aria-label="Pagination"
+      class="font-mono text-sm uppercase tracking-widest"
+    >
       <ul class="flex items-center space-x-2">
         {url.prev && (
           <li>

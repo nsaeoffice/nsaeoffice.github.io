@@ -7,26 +7,32 @@ import Plus from "@tabler/icons/outline/plus.svg";
 import Minus from "@tabler/icons/outline/minus.svg";
 ---
 
-<section id="faq-section" class="container mx-auto px-4 py-16 md:py-24">
-  <div
-    class="flex flex-col items-center justify-center gap-4 text-center mb-12"
-  >
-    <Badge variant="secondary" size="sm">FAQ</Badge>
+<section id="faq-section" class="py-16 md:py-32">
+  <div class="flex flex-col gap-4 mb-12">
+    <Badge
+      variant="secondary"
+      size="sm"
+      class={"font-mono text-xs uppercase tracking-widest"}
+    >
+      FAQ
+    </Badge>
 
-    <h1 class="text-4xl md:text-5xl font-medium tracking-tight text-balance">
+    <h1
+      class="font-sans text-4xl md:text-5xl font-medium tracking-tighter text-balance"
+    >
       Frequently Asked Questions
     </h1>
   </div>
 
   {
     faqs.length > 0 ? (
-      <div class="space-y-4">
+      <div class="space-y-4 ">
         {faqs.map((faq) => (
           <details
-            class="group rounded-xl bg-secondary/50 p-6 [&_summary::-webkit-details-marker]:hidden"
+            class="group rounded-xl bg-secondary/50 border border-border/50 p-6 [&_summary::-webkit-details-marker]:hidden"
             name="faq-accordion"
           >
-            <summary class="flex cursor-pointer items-center justify-between gap-4 text-lg font-medium text-foreground marker:content-none hover:text-primary transition-colors">
+            <summary class="flex cursor-pointer items-center justify-between gap-4 text-lg font-sans font-medium text-foreground marker:content-none hover:text-primary transition-colors">
               <span>{faq.data.question}</span>
 
               <span class="relative flex size-8 shrink-0 items-center justify-center rounded-full border border-border bg-background transition-colors group-hover:border-primary/50">
@@ -36,27 +42,28 @@ import Minus from "@tabler/icons/outline/minus.svg";
               </span>
             </summary>
 
-            <div class="mt-4 text-muted-foreground leading-relaxed border-t border-border/50 pt-4">
+            <div class="mt-4 font-sans text-muted-foreground leading-relaxed border-t border-border/50 pt-4">
               {faq.data.answer}
             </div>
           </details>
         ))}
       </div>
     ) : (
-      <div class="text-center p-12 text-muted-foreground">
+      <div class="text-center p-12 font-sans text-muted-foreground">
         <p>No questions currently available.</p>
       </div>
     )
   }
-  <p
-    class="mx-auto mt-12 text-lg text-muted-foreground max-w-xl text-balance text-center"
-  >
-    Need a personalized answer?
+
+  <div class="mt-12 flex flex-col items-center gap-3 text-center">
+    <p class="font-sans text-lg text-muted-foreground text-balance">
+      Need a personalized answer?
+    </p>
     <a
       href="/contact"
-      class="inline-flex items-center gap-1 font-medium text-primary hover:underline underline-offset-4 transition-all ml-1"
+      class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary hover:text-primary/80 transition-colors"
     >
       Contact our team <ArrowRight class="size-4" />
     </a>
-  </p>
+  </div>
 </section>

@@ -15,34 +15,33 @@ const authorsData = authors ? await getEntries(authors) : null;
 const categoriesData = categories ? await getEntries(categories) : null;
 ---
 
-<article class="space-y-2 cursor-pointer flex flex-col relative z-10 p-2">
+<article class="space-y-2 cursor-pointer flex flex-col relative z-10 p-4">
   <div class="flex flex-row justify-between items-center">
     {categoriesData ? <Categories categories={categoriesData} /> : <div />}
 
-    <p class="text-xs capitalize">
+    <p class="font-mono text-xs text-muted-foreground uppercase tracking-wider">
       <FormattedDate date={pubDate} />
     </p>
   </div>
 
   <div class="flex flex-col gap-2 grow">
     <a
-      class="text-2xl font-medium first-letter:capitalize group-hover:underline"
+      class="font-sans text-xl md:text-2xl font-medium first-letter:capitalize group-hover:underline leading-snug"
       href={`/blog/${id}`}
     >
       {title}
     </a>
     {
       subtitle && (
-        <span class="text-sm text-muted-foreground first-letter:capitalize">
+        <span class="font-sans text-sm text-muted-foreground first-letter:capitalize">
           {subtitle}
         </span>
       )
     }
-    <div
-      class="flex flex-row items-center justify-between pt-2 pb-8 lg:pb-10 mt-auto"
-    >
+    <div class="flex flex-row items-center justify-between pt-4 pb-0 mt-auto">
+      {/* READ MORE: font-mono */}
       <a
-        class="text-sm font-medium flex flex-row gap-2 items-center hover:underline"
+        class="font-mono text-xs uppercase tracking-widest flex flex-row gap-2 items-center hover:text-primary transition-colors"
         href={`/blog/${id}`}
       >
         Read more <ArrowNarrowRight class="w-4 h-4" />

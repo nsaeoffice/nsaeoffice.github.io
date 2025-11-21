@@ -42,17 +42,14 @@ const isClosed = status === "closed";
 ---
 
 <PageLayout title={title} description={description ?? title}>
-  <article class="py-8 space-y-8">
+  <article class="py-8 space-y-10">
+    <a
+      href="/careers/page/1"
+      class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors px-4"
+    >
+      <ArrowLeft class="size-4" /> Back to All Vacancies
+    </a>
     <header class="space-y-6 text-center border-b pb-8">
-      <div class="flex items-center">
-        <a
-          href="/careers"
-          class="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-        >
-          <ArrowLeft class="size-4" />
-          Back to Vacancies
-        </a>
-      </div>
       <div class="flex flex-wrap justify-center gap-2">
         <Badge variant={isClosed ? "destructive" : "secondary"}>
           {isClosed ? "Position Closed" : type}

@@ -36,15 +36,27 @@ const pageDescription =
 ---
 
 <PageLayout title={pageTitle} description={pageDescription}>
-  <main class="space-y-12 py-8">
+  <main class="space-y-12 py-16 md:py-24">
     <section
       class="flex flex-col items-center justify-center text-center gap-4"
     >
-      <Badge variant={"secondary"} size={"sm"}>Archives</Badge>
+      <Badge
+        variant={"secondary"}
+        size={"sm"}
+        class="font-mono uppercase tracking-widest text-xs mb-3 border border-border/50"
+      >
+        Archives
+      </Badge>
 
-      <h1 class="text-4xl md:text-6xl font-medium">Leadership History</h1>
+      <h1
+        class="font-sans text-5xl md:text-7xl font-medium tracking-tighter leading-tight max-w-4xl"
+      >
+        Leadership History
+      </h1>
 
-      <p class="text-lg text-muted-foreground max-w-2xl text-balance">
+      <p
+        class="font-sans text-lg text-muted-foreground max-w-2xl text-balance pt-2"
+      >
         Browse the dedicated members and executive boards that have shaped our
         journey through the years.
       </p>
@@ -59,25 +71,28 @@ const pageDescription =
                 <ClickableCard
                   href={`/past-committee/${committee.id}/`}
                   ariaLabel={`View details for ${committee.data.title}`}
-                  class="group relative flex flex-col justify-between rounded-xl border bg-card text-card-foreground p-6  transition-all"
+                  class="group relative flex flex-col justify-between rounded-xl border border-border/50 bg-secondary text-secondary-foreground p-6 transition-all hover:border-primary/50"
                 >
                   <div class="space-y-2">
-                    <div class="flex items-start justify-between">
-                      <span class="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    <div class="flex items-start justify-between border-b border-border/50 pb-2 mb-2">
+                      <span class="font-mono text-xs text-muted-foreground uppercase tracking-widest">
                         Iteration {committee.data.committeeIteration}
                       </span>
                       <ArrowRight class="size-5 text-muted-foreground transition-transform group-hover:-rotate-45 group-hover:text-primary" />
                     </div>
 
-                    <h3 class="text-xl font-medium tracking-tight group-hover:underline decoration-2 decoration-primary/50 underline-offset-4">
+                    <h3 class="font-sans text-xl font-medium tracking-tight group-hover:text-primary transition-colors">
                       {committee.data.title}
                     </h3>
                   </div>
                 </ClickableCard>
               ))}
             </div>
-            <div class="flex justify-center mt-8">
-              <Pagination url={page.url} />
+            <div class="flex justify-center mt-16">
+              <Pagination
+                url={page.url}
+                class="font-mono text-sm uppercase tracking-widest"
+              />
             </div>
           </>
         ) : (

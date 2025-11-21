@@ -25,9 +25,11 @@ const categoriesData = categories ? await getEntries(categories) : null;
 ---
 
 <article
-  class="gap-4 gap-x-6 cursor-pointer group grid grid-cols-2 p-3 md:p-4 bg-secondary text-secondary-foreground rounded-xl"
+  class="gap-4 gap-x-6 cursor-pointer group grid grid-cols-1 md:grid-cols-2 p-0 md:p-0 bg-secondary text-secondary-foreground rounded-2xl"
 >
-  <div class="col-span-2 md:col-span-1 flex flex-col min-h-64 gap-2">
+  <div
+    class="col-span-1 flex flex-col min-h-64 gap-2 p-4 md:p-6 order-2 md:order-1"
+  >
     <div class="flex flex-row justify-between items-center">
       {
         categoriesData ? (
@@ -37,20 +39,22 @@ const categoriesData = categories ? await getEntries(categories) : null;
         )
       }
 
-      <p class="text-xs capitalize">
+      <p
+        class="font-mono text-xs uppercase tracking-wider text-muted-foreground"
+      >
         <FormattedDate date={pubDate} />
       </p>
     </div>
     <div class="flex flex-col gap-2 grow">
       <a
-        class="text-2xl font-medium first-letter:capitalize group-hover:underline"
+        class="font-sans text-2xl md:text-3xl font-medium first-letter:capitalize group-hover:underline leading-snug"
         href={`/blog/${id}`}
       >
         {title}
       </a>
       {
         subtitle && (
-          <span class="text-sm text-muted-foreground first-letter:capitalize">
+          <span class="font-sans text-sm text-muted-foreground first-letter:capitalize">
             {subtitle}
           </span>
         )
@@ -59,7 +63,7 @@ const categoriesData = categories ? await getEntries(categories) : null;
     <Separator class={"my-4"} />
     <div class="flex flex-row justify-between items-center">
       <a
-        class="text-sm font-medium flex flex-row gap-2 items-center hover:underline"
+        class="font-mono text-xs uppercase tracking-widest flex flex-row gap-2 items-center hover:text-primary transition-colors"
         href={`/blog/${id}`}
       >
         Read more <ArrowNarrowRight class="w-4 h-4" />
@@ -69,10 +73,10 @@ const categoriesData = categories ? await getEntries(categories) : null;
   </div>
   {
     heroImage && (
-      <div class="col-span-2 md:col-span-1 rounded-xl max-h-64 lg:min-h-80 overflow-hidden">
+      <div class="col-span-1 rounded-t-xl md:rounded-l-none md:rounded-r-xl max-h-64 lg:min-h-80 overflow-hidden order-1 md:order-2">
         <Image
           inferSize
-          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
           src={heroImage}
           alt={heroImageAlt ?? ""}
         />

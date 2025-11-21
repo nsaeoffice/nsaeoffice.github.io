@@ -1,0 +1,256 @@
+---
+import ArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import PlayerPause from "@tabler/icons/outline/player-pause.svg";
+import Plus from "@tabler/icons/outline/plus.svg";
+import Badge from "@/components/astro/Badge.astro";
+
+import { Image } from "astro:assets";
+import MissionPlaceholder1 from "src/assets/mission-placeholder-1.avif";
+import MissionPlaceholder2 from "src/assets/mission-placeholder-2.avif";
+import MissionPlaceholder3 from "src/assets/mission-placeholder-3.avif";
+import MissionPlaceholder4 from "src/assets/mission-placeholder-4.mp4";
+---
+
+<section
+  class="mission-section relative space-y-12 py-24 md:py-32 bg-background text-foreground overflow-hidden"
+>
+  <div
+    class="mission-text border-b border-border/50 pb-12 flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8"
+  >
+    <div class="max-w-3xl">
+      <div class="flex items-center gap-4 mb-4">
+        <Badge class="font-mono text-xs uppercase tracking-widest" size="sm"
+          >( 02 )</Badge
+        >
+        <span
+          class="font-mono text-xs text-muted-foreground uppercase tracking-widest"
+          >Mission Brief</span
+        >
+      </div>
+      <h1
+        class="text-5xl md:text-8xl font-sans font-medium tracking-tighter leading-[0.9]"
+      >
+        Doloribus ratione <br />
+        <span class="text-muted-foreground italic font-serif">laboriosam.</span>
+      </h1>
+    </div>
+    <div class="max-w-md">
+      <p
+        class="text-base md:text-lg text-muted-foreground font-sans leading-relaxed"
+      >
+        <span class="font-mono text-xs text-primary block mb-2"
+          >[ STATUS: ACTIVE ]</span
+        >
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus ratione
+        iste ex perferendis laboriosam enim numquam soluta magni.
+      </p>
+    </div>
+  </div>
+
+  <div
+    class="grid grid-cols-1 md:grid-cols-[1fr_1fr] lg:grid-cols-[2fr_3fr] gap-4"
+  >
+    <div
+      class="mission-card group relative rounded-2xl overflow-hidden bg-secondary min-h-[400px] lg:min-h-[600px] border border-border/50"
+    >
+      <Image
+        alt="laboriosam distinctio"
+        src={MissionPlaceholder1}
+        width="800"
+        class="absolute w-full h-full top-0 left-0 object-cover transition-all duration-700 grayscale group-hover:grayscale-0 group-hover:scale-105"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60"
+      >
+      </div>
+
+      <div class="absolute bottom-0 left-0 w-full p-6 md:p-8 text-white z-10">
+        <div
+          class="flex justify-between items-end border-t border-white/20 pt-6"
+        >
+          <div>
+            <h3
+              class="font-mono text-xs uppercase tracking-widest mb-2 text-white/70"
+            >
+              Objective A
+            </h3>
+            <h1 class="font-sans text-3xl md:text-5xl font-medium leading-none">
+              Laboriosam
+            </h1>
+          </div>
+          <ArrowRight
+            class="w-6 h-6 text-white/50 group-hover:text-white transition-colors"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
+      <div
+        class="mission-card group rounded-2xl p-6 md:p-8 bg-secondary flex flex-col justify-between min-h-[200px] border border-border/50 hover:border-foreground/20 transition-colors"
+      >
+        <div class="flex justify-between items-start">
+          <Plus class="w-5 h-5 text-muted-foreground" />
+          <span class="font-mono text-xs text-muted-foreground"
+            >( Metric 01 )</span
+          >
+        </div>
+        <div>
+          <h3
+            class="font-sans text-5xl md:text-6xl font-medium tracking-tight mb-2"
+          >
+            1K+
+          </h3>
+          <p
+            class="font-mono text-xs uppercase tracking-wider text-muted-foreground"
+          >
+            Total Delectus
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="mission-card group relative rounded-2xl overflow-hidden bg-secondary min-h-[200px] border border-border/50"
+      >
+        <Image
+          alt="Perfect Pot"
+          src={MissionPlaceholder2}
+          width="400"
+          class="absolute w-full h-full top-0 left-0 object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div
+          class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors"
+        >
+        </div>
+      </div>
+
+      <div
+        class="mission-card group rounded-2xl p-6 md:p-8 bg-secondary flex flex-col justify-between min-h-[200px] border border-border/50 hover:border-foreground/20 transition-colors"
+      >
+        <div class="flex justify-between items-start">
+          <Plus class="w-5 h-5 text-muted-foreground" />
+          <span class="font-mono text-xs text-muted-foreground"
+            >( Metric 02 )</span
+          >
+        </div>
+        <div>
+          <h3
+            class="font-sans text-5xl md:text-6xl font-medium tracking-tight mb-2"
+          >
+            100+
+          </h3>
+          <p
+            class="font-mono text-xs uppercase tracking-wider text-muted-foreground"
+          >
+            Culpa Omni
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="mission-card relative rounded-2xl overflow-hidden bg-black min-h-[250px] col-span-1 md:col-span-2 lg:col-span-1 xl:col-span-1 border border-border/50"
+      >
+        <div
+          class="absolute top-4 left-4 z-20 bg-red-600 text-white text-[10px] font-mono uppercase px-2 py-0.5 rounded-sm animate-pulse"
+        >
+          Live Feed
+        </div>
+        <video
+          autoplay
+          class="absolute w-full h-full top-0 left-0 object-cover opacity-80"
+          loop
+          muted
+          playsinline
+        >
+          <source src={MissionPlaceholder4} type="video/mp4" />
+        </video>
+        <div class="absolute bottom-4 right-4 z-20">
+          <button
+            class="bg-white/10 backdrop-blur-md border border-white/20 p-2 rounded-full hover:bg-white hover:text-black transition-all"
+          >
+            <PlayerPause class="w-4 h-4" />
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mission-card group relative rounded-2xl overflow-hidden bg-secondary min-h-[350px] md:col-span-2 lg:col-span-2 flex items-center border border-border/50"
+    >
+      <Image
+        alt="Background"
+        src={MissionPlaceholder3}
+        width="1200"
+        class="absolute w-full h-full top-0 left-0 object-cover object-[0%_30%] opacity-40 group-hover:opacity-20 transition-opacity duration-700"
+      />
+      <div
+        class="absolute inset-0 bg-gradient-to-r from-black via-black/50 to-transparent z-0"
+      >
+      </div>
+
+      <div class="relative z-10 w-full md:w-2/3 p-8 md:p-12 text-white">
+        <div class="mb-6">
+          <Badge class="font-mono border-white/30">( Analysis )</Badge>
+        </div>
+        <h3
+          class="font-sans text-3xl md:text-5xl font-light mb-6 leading-tight"
+        >
+          Enim numquam <span class="italic font-serif text-gray-400"
+            >soluta magni</span
+          >
+        </h3>
+        <p
+          class="font-sans text-lg text-gray-300 mb-8 leading-relaxed max-w-lg"
+        >
+          Totam amet rerum repellat reiciendis quas delectus culpa omnis sed
+          libero maxime? Rem molestias odio, earum consectetur sunt ex neque.
+        </p>
+
+        <button
+          class="group/btn flex items-center gap-4 font-mono text-xs uppercase tracking-widest hover:text-primary transition-colors"
+        >
+          Read Full Report <ArrowRight
+            class="w-4 h-4 transition-transform group-hover/btn:translate-x-2"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".mission-section",
+        start: "top 75%",
+        end: "top 20%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tl.from(".mission-text h1, .mission-text p", {
+      y: 60,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.1,
+      ease: "power3.out",
+    }).from(
+      ".mission-card",
+      {
+        y: 60,
+        opacity: 0,
+        scale: 0.95,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "power2.out",
+      },
+      "-=0.6"
+    );
+  }
+</script>

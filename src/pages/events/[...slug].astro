@@ -154,7 +154,14 @@ const resolvedInstructors = await Promise.all(
 ---
 
 <PageLayout title={data.title} description={data.subtitle || SITE_DESCRIPTION}>
-  <article class="py-8 md:py-12">
+  <article class="py-8 space-y-10">
+    <a
+      href="/events/page/1"
+      class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors px-4"
+    >
+      <ArrowLeft class="size-4" /> Back to All Events
+    </a>
+
     <header
       class="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-12 mb-12"
     >
@@ -172,19 +179,27 @@ const resolvedInstructors = await Promise.all(
                 )
               }
             </span>
-            <div class="flex flex-col capitalize">
-              <span class="text-lg font-semibold">{dateDisplay}</span>
-              <span class="text-md text-muted-foreground"
+            <div class="flex flex-col">
+              <span class="font-sans text-lg font-medium tracking-tight"
+                >{dateDisplay}</span
+              >
+              <span class="font-sans text-md text-muted-foreground"
                 >{locationDisplay}</span
               >
             </div>
           </div>
 
-          <div class="flex flex-col gap-2 capitalize">
-            <h1 class="text-3xl md:text-4xl font-bold">{data.title}</h1>
+          <div class="flex flex-col gap-2">
+            <h1
+              class="font-sans text-3xl md:text-4xl font-medium tracking-tighter"
+            >
+              {data.title}
+            </h1>
             {
               data.subtitle && (
-                <p class="text-lg text-muted-foreground">{data.subtitle}</p>
+                <p class="font-sans text-lg text-muted-foreground">
+                  {data.subtitle}
+                </p>
               )
             }
           </div>
@@ -196,18 +211,18 @@ const resolvedInstructors = await Promise.all(
           >
             <div class="text-center">
               <span
-                class="text-xs text-muted-foreground uppercase tracking-wider"
+                class="font-mono text-xs text-muted-foreground uppercase tracking-wider"
                 >Start</span
               >
-              <p class="font-semibold">{startTimeDisplay}</p>
+              <p class="font-sans font-medium">{startTimeDisplay}</p>
             </div>
             {
               durationDisplay && (
                 <Badge
                   size={"lg"}
-                  class="capitalize flex flex-row items-center text-sm"
+                  class="font-mono text-xs uppercase tracking-wider flex flex-row items-center"
                 >
-                  <CalendarWeek class="h-6 w-6 shrink-0" />
+                  <CalendarWeek class="h-5 w-5 mr-2 shrink-0" />
                   {durationDisplay}
                 </Badge>
               )
@@ -215,22 +230,25 @@ const resolvedInstructors = await Promise.all(
 
             <div class="text-center">
               <span
-                class="text-xs text-muted-foreground uppercase tracking-wider"
+                class="font-mono text-xs text-muted-foreground uppercase tracking-wider"
                 >End</span
               >
-              <p class="font-semibold">{endTimeDisplay}</p>
+              <p class="font-sans font-medium">{endTimeDisplay}</p>
             </div>
           </div>
 
           {
             data.registrationLink && (
               <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                <Button href={data.registrationLink}>
+                <Button
+                  href={data.registrationLink}
+                  class="font-sans font-medium"
+                >
                   Register Now
                   <ArrowUpRight class={"ml-2 size-4"} />
                 </Button>
                 {data.registrationDeadline && (
-                  <div class="flex items-center gap-2 text-sm text-muted-foreground">
+                  <div class="flex items-center gap-2 font-mono text-xs text-muted-foreground uppercase tracking-wider">
                     <CalendarWeek class="h-4 w-4" />
                     <span>
                       Deadline: {formatDate(data.registrationDeadline)}
@@ -261,8 +279,12 @@ const resolvedInstructors = await Promise.all(
     <div class="grid grid-cols-1 lg:grid-cols-[3fr_1.5fr] gap-8 lg:gap-12">
       <div class="flex flex-col gap-10">
         <section>
-          <h2 class="text-2xl font-bold mb-4">About the Event</h2>
-          <div class="prose prose-lg dark:prose-invert max-w-none">
+          <h2 class="font-sans text-2xl font-medium tracking-tight mb-4">
+            About the Event
+          </h2>
+          <div
+            class="prose prose-lg prose-headings:font-sans prose-p:font-sans dark:prose-invert max-w-none"
+          >
             <Content />
           </div>
         </section>
@@ -270,27 +292,29 @@ const resolvedInstructors = await Promise.all(
         {
           Object.keys(sessionsByDay).length > 0 && (
             <section>
-              <h2 class="text-2xl font-bold mb-6">Schedule</h2>
+              <h2 class="font-sans text-2xl font-medium tracking-tight mb-6">
+                Schedule
+              </h2>
               <div class="flex flex-col gap-8">
                 {Object.entries(sessionsByDay).map(([dayLabel, sessions]) => (
                   <div class="rounded-xl border bg-card text-card-foreground shadow-sm p-4">
-                    <h3 class="font-semibold leading-none tracking-tight text-lg text-center">
+                    <h3 class="font-sans font-medium leading-none tracking-tight text-lg text-center">
                       {dayLabel}
                     </h3>
 
                     <div class="pt-0 mt-4 flex flex-col gap-4">
                       {sessions?.map((session) => (
                         <div class="group relative grid gap-1 pb-4 last:pb-0 border-l-2 border-muted pl-4 hover:border-primary transition-colors">
-                          <p class="flex flex-row items-center gap-1 text-sm leading-none text-muted-foreground">
+                          <p class="flex flex-row items-center gap-1 font-mono text-xs uppercase tracking-wide leading-none text-muted-foreground">
                             <Clock class="size-4 shrink-0" />
                             {formatTime(session.startTime)} –
                             {formatTime(session.endTime)}
                           </p>
-                          <p class="font-bold text-lg leading-none">
+                          <p class="font-sans font-medium text-lg leading-none">
                             {session.sessionTitle}
                           </p>
 
-                          <div class="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground mt-1">
+                          <div class="flex flex-wrap gap-x-4 gap-y-1 font-sans text-sm text-muted-foreground mt-1">
                             {session.location && (
                               <span class="flex items-center gap-1">
                                 <MapPin class="h-3.5 w-3.5" />
@@ -305,7 +329,7 @@ const resolvedInstructors = await Promise.all(
                             )}
                           </div>
                           {session.description && (
-                            <p class="text-sm text-muted-foreground mt-2">
+                            <p class="font-sans text-sm text-muted-foreground mt-2">
                               {session.description}
                             </p>
                           )}
@@ -325,17 +349,19 @@ const resolvedInstructors = await Promise.all(
           data.location && (
             <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
               <div class="p-6">
-                <h3 class="text-xl font-semibold mb-4">Event Details</h3>
+                <h3 class="font-sans text-xl font-medium tracking-tight mb-4">
+                  Event Details
+                </h3>
                 <div class="flex flex-col gap-3 text-sm">
                   {data.location.type !== "online" && (
                     <>
                       {data.location.venueName && (
-                        <span class="font-medium text-base">
+                        <span class="font-sans font-medium text-base">
                           {data.location.venueName}
                         </span>
                       )}
                       {(data.location.address || data.location.city) && (
-                        <span class="text-muted-foreground">
+                        <span class="font-sans text-muted-foreground">
                           {[
                             data.location.address,
                             data.location.city,
@@ -349,7 +375,7 @@ const resolvedInstructors = await Promise.all(
                         <a
                           href={data.location.mapsLink}
                           target="_blank"
-                          class="flex items-center gap-2 font-medium text-primary hover:underline mt-1"
+                          class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary hover:underline mt-1"
                         >
                           <Map class="h-4 w-4" />
                           View on Map
@@ -364,24 +390,24 @@ const resolvedInstructors = await Promise.all(
                         <a
                           href={data.location.meetingUrl}
                           target="_blank"
-                          class="flex items-center gap-2 font-medium text-primary hover:underline"
+                          class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-primary hover:underline"
                         >
                           <LinkIcon class="h-4 w-4" />
                           Join Online Meeting
                         </a>
                       )}
                       {data.location.meetingId && (
-                        <p>
+                        <p class="font-sans">
                           Meeting ID:
-                          <span class="font-mono bg-muted px-1 rounded">
+                          <span class="font-mono bg-muted px-1 rounded ml-1">
                             {data.location.meetingId}
                           </span>
                         </p>
                       )}
                       {data.location.meetingPassword && (
-                        <p>
+                        <p class="font-sans">
                           Password:
-                          <span class="font-mono bg-muted px-1 rounded">
+                          <span class="font-mono bg-muted px-1 rounded ml-1">
                             {data.location.meetingPassword}
                           </span>
                         </p>
@@ -398,7 +424,7 @@ const resolvedInstructors = await Promise.all(
           resolvedInstructors && resolvedInstructors.length > 0 && (
             <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
               <div class="p-6">
-                <h3 class="text-xl font-semibold mb-4">
+                <h3 class="font-sans text-xl font-medium tracking-tight mb-4">
                   Instructors & Speakers
                 </h3>
                 <div class="flex flex-col gap-4">
@@ -436,8 +462,8 @@ const resolvedInstructors = await Promise.all(
                           )}
                         </div>
                         <div class="text-sm">
-                          <p class="font-semibold">{name}</p>
-                          <p class="text-muted-foreground text-xs">
+                          <p class="font-sans font-medium">{name}</p>
+                          <p class="font-sans text-muted-foreground text-xs">
                             {position}
                           </p>
                         </div>
@@ -454,7 +480,9 @@ const resolvedInstructors = await Promise.all(
           data.contactPersons && data.contactPersons.length > 0 && (
             <div class="rounded-lg border bg-card text-card-foreground shadow-sm">
               <div class="p-6">
-                <h3 class="text-xl font-semibold mb-4">Contact</h3>
+                <h3 class="font-sans text-xl font-medium tracking-tight mb-4">
+                  Contact
+                </h3>
                 <div class="flex flex-col gap-5">
                   {data.contactPersons.map((person) => (
                     <div
@@ -464,15 +492,15 @@ const resolvedInstructors = await Promise.all(
                           : ""
                       }
                     >
-                      <p class="text-sm font-semibold flex items-center gap-2">
+                      <p class="font-sans text-sm font-medium flex items-center gap-2">
                         {person.name}
                         {person.isPrimary && (
-                          <span class="text-[10px] uppercase font-bold text-primary bg-primary/10 px-1.5 py-0.5 rounded">
+                          <span class="font-mono text-[10px] uppercase tracking-widest text-primary bg-primary/10 px-1.5 py-0.5 rounded">
                             Primary
                           </span>
                         )}
                       </p>
-                      <p class="text-xs text-muted-foreground mb-2">
+                      <p class="font-sans text-xs text-muted-foreground mb-2">
                         {person.role}
                       </p>
 
@@ -480,7 +508,7 @@ const resolvedInstructors = await Promise.all(
                         {person.email && (
                           <a
                             href={`mailto:${person.email}`}
-                            class="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                            class="flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-primary transition-colors"
                           >
                             <Mail class={"size-4"} />
                             {person.email}
@@ -489,7 +517,7 @@ const resolvedInstructors = await Promise.all(
                         {person.phone && (
                           <a
                             href={`tel:${person.phone}`}
-                            class="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                            class="flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-primary transition-colors"
                           >
                             <Phone class={"size-4"} />
                             {person.phone}

@@ -24,27 +24,30 @@ const isOnline =
 ---
 
 <article
-  class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-5 md:p-6"
+  class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6 md:p-8 group rounded-2xl border border-border/50 hover:border-primary/50 transition-colors"
 >
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-4 md:col-span-1">
     <div class="flex items-center justify-between">
-      <Badge variant="outline" class="w-fit capitalize bg-background/50">
+      <Badge
+        variant="outline"
+        class="font-mono text-xs uppercase tracking-widest border-border/50 bg-background/50"
+      >
         {formatEventType(data.eventType)}
       </Badge>
-      <span class="md:hidden text-xs text-muted-foreground font-medium">
+      <span class="md:hidden font-mono text-xs text-muted-foreground uppercase">
         <FormattedDate date={data.eventStart} />
       </span>
     </div>
 
     <div class="flex flex-col gap-2 grow">
       <h3
-        class="text-2xl font-semibold leading-tight group-hover:underline decoration-primary decoration-2 underline-offset-4"
+        class="font-sans text-2xl md:text-3xl font-medium leading-snug group-hover:text-foreground/80 transition-colors"
       >
         {data.title}
       </h3>
       {
         data.subtitle && (
-          <p class="text-sm text-muted-foreground line-clamp-3">
+          <p class="font-sans text-sm text-muted-foreground line-clamp-3">
             {data.subtitle}
           </p>
         )
@@ -52,7 +55,7 @@ const isOnline =
     </div>
 
     <div
-      class="mt-auto hidden md:flex items-center gap-1 text-sm font-medium text-primary pt-4"
+      class="mt-auto hidden md:flex items-center gap-1 font-mono text-xs uppercase tracking-widest text-foreground hover:text-primary transition-colors pt-4"
     >
       <span>View Details</span>
       <ArrowNarrowRight
@@ -62,15 +65,17 @@ const isOnline =
   </div>
 
   <div
-    class="flex flex-col gap-5 lg:border-l border-border/10 lg:pl-6 justify-center"
+    class="flex flex-col gap-6 md:col-span-1 lg:border-l border-border/50 lg:pl-6 justify-center"
   >
     <div class="flex gap-3 items-start">
-      <div class="p-2 bg-background/50 rounded-md shrink-0">
+      <div
+        class="p-2 bg-secondary/50 rounded-lg shrink-0 border border-border/50"
+      >
         <CalendarEvent class="w-5 h-5 text-primary" />
       </div>
       <div>
-        <p class="font-medium text-sm">Date</p>
-        <p class="text-sm text-muted-foreground">
+        <p class="font-sans font-medium text-sm">Date</p>
+        <p class="font-mono text-sm text-foreground">
           <FormattedDate date={data.eventStart} />
           {
             data.eventEnd > data.eventStart && (
@@ -85,7 +90,9 @@ const isOnline =
     </div>
 
     <div class="flex gap-3 items-start">
-      <div class="p-2 bg-background/50 rounded-md shrink-0">
+      <div
+        class="p-2 bg-secondary/50 rounded-lg shrink-0 border border-border/50"
+      >
         {
           isOnline ? (
             <Video class="w-5 h-5 text-primary" />
@@ -95,10 +102,10 @@ const isOnline =
         }
       </div>
       <div class="min-w-0">
-        <p class="font-medium text-sm">
+        <p class="font-sans font-medium text-sm">
           {isOnline ? "Online" : "Location"}
         </p>
-        <p class="text-sm text-muted-foreground truncate">
+        <p class="font-mono text-sm text-foreground truncate">
           {
             data.location?.type === "in_person"
               ? data.location.venueName
@@ -107,7 +114,9 @@ const isOnline =
         </p>
         {
           data.location?.city && (
-            <p class="text-xs text-muted-foreground/70">{data.location.city}</p>
+            <p class="font-mono text-xs text-muted-foreground/70 tracking-wide">
+              {data.location.city}
+            </p>
           )
         }
       </div>
@@ -116,7 +125,7 @@ const isOnline =
     {
       data.registrationLink && (
         <div class="pt-2">
-          <Button href={data.registrationLink}>
+          <Button href={data.registrationLink} class="font-sans font-medium">
             Register Now
             <ArrowUpRight class={"ml-2 size-4"} />
           </Button>
@@ -127,10 +136,10 @@ const isOnline =
 
   {
     data.coverImage && (
-      <div class="md:col-span-2 lg:col-span-1 rounded-xl overflow-hidden min-h-[200px] lg:h-full relative group-hover:shadow-inner">
+      <div class="md:col-span-3 lg:col-span-2 rounded-2xl overflow-hidden min-h-[250px] lg:h-auto relative">
         <Image
           inferSize
-          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
           src={data.coverImage}
           alt={data.title ?? ""}
         />

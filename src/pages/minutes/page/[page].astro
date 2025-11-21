@@ -1,6 +1,5 @@
 ---
 import Badge from "@/components/astro/Badge.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../../consts";
 
 import ArrowRight from "@tabler/icons/outline/arrow-right.svg";
 import CalendarWeek from "@tabler/icons/outline/calendar-week.svg";
@@ -44,15 +43,25 @@ const pageDescription =
 ---
 
 <PageLayout title={pageTitle} description={pageDescription}>
-  <main class="py-8 space-y-12">
+  <main class="py-16 md:py-24 space-y-12">
     <section
       class="flex flex-col items-center justify-center gap-4 text-center"
     >
-      <Badge variant={"secondary"} size={"sm"}>Transparency</Badge>
-      <h1 class="text-4xl md:text-6xl font-medium text-balance">
+      <Badge
+        variant={"secondary"}
+        size={"sm"}
+        class="font-mono uppercase tracking-widest text-xs mb-3 border border-border/50"
+      >
+        Transparency
+      </Badge>
+      <h1
+        class="font-sans text-5xl md:text-7xl font-medium tracking-tighter leading-tight max-w-4xl text-balance"
+      >
         Official Meeting Records
       </h1>
-      <p class="text-lg text-muted-foreground max-w-2xl text-balance">
+      <p
+        class="font-sans text-lg text-muted-foreground max-w-2xl text-balance pt-2"
+      >
         Browse the minutes from our General, Executive, and Committee meetings.
       </p>
     </section>
@@ -64,13 +73,13 @@ const pageDescription =
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {page.data.map((minute) => (
                 <ClickableCard
-                  class="group relative flex flex-col justify-between rounded-xl border bg-card text-card-foreground p-6 shadow-sm transition-all hover:shadow-md hover:border-primary/50 h-full"
+                  class="group relative flex flex-col justify-between rounded-xl border border-border/50 bg-secondary text-secondary-foreground p-6 transition-all hover:border-primary/50 h-full"
                   href={`/minutes/${minute.id}/`}
                 >
                   <div class="space-y-4">
                     <div class="flex items-center justify-between">
-                      <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                        <CalendarWeek class="size-4" />
+                      <div class="flex items-center gap-1.5 font-mono text-sm text-muted-foreground">
+                        <CalendarWeek class="size-4 text-primary/70" />
                         <time datetime={minute.data.pubDate.toISOString()}>
                           {minute.data.pubDate.toLocaleDateString(undefined, {
                             year: "numeric",
@@ -84,24 +93,25 @@ const pageDescription =
                           minute.data.type === "agm" ? "default" : "outline"
                         }
                         size="xs"
+                        class="font-mono text-xs uppercase tracking-widest"
                       >
                         {formatType(minute.data.type)}
                       </Badge>
                     </div>
 
-                    <div class="space-y-2">
-                      <h3 class="text-xl font-bold tracking-tight group-hover:underline decoration-2 decoration-primary/50 underline-offset-4">
+                    <div class="space-y-3">
+                      <h3 class="font-sans text-xl font-bold tracking-tight group-hover:text-primary transition-colors leading-snug">
                         {minute.data.title}
                       </h3>
 
-                      <div class="flex items-center gap-1.5 text-sm text-muted-foreground">
-                        <MapPin class="size-4" />
+                      <div class="flex items-center gap-1.5 font-mono text-sm text-muted-foreground/80">
+                        <MapPin class="size-4 text-primary/70" />
                         <span>{minute.data.location}</span>
                       </div>
                     </div>
                   </div>
 
-                  <div class="mt-6 flex items-center text-sm font-medium text-primary">
+                  <div class="mt-6 flex items-center font-mono text-xs uppercase tracking-widest text-foreground hover:text-primary transition-colors">
                     <span class="flex items-center gap-2">
                       <FileText class="size-4" />
                       View Minutes
@@ -111,14 +121,17 @@ const pageDescription =
                 </ClickableCard>
               ))}
             </div>
-            <div class="flex justify-center mt-8">
-              <Pagination url={page.url} />
+            <div class="flex justify-center mt-16">
+              <Pagination
+                url={page.url}
+                class="font-mono text-sm uppercase tracking-widest"
+              />
             </div>
           </>
         ) : (
-          <div class="flex flex-col items-center justify-center py-20 text-center space-y-2 border rounded-xl border-dashed">
+          <div class="flex flex-col items-center justify-center py-20 text-center space-y-2 rounded-xl border border-dashed border-border/50">
             <FileText class="size-10 text-muted-foreground/50" />
-            <p class="text-xl font-medium text-muted-foreground">
+            <p class="font-sans text-xl font-medium text-muted-foreground">
               No minutes found.
             </p>
           </div>

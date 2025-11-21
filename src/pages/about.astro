@@ -1,70 +1,389 @@
 ---
 import PageLayout from "@/layouts/PageLayout.astro";
+import Badge from "@/components/astro/Badge.astro";
+import Button from "@/components/astro/Button/Button.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+import ArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import Quote from "@tabler/icons/outline/quote.svg";
+import Leaf from "@tabler/icons/outline/leaf.svg";
+import Bulb from "@tabler/icons/outline/bulb.svg";
+import Users from "@tabler/icons/outline/users.svg";
+import Gavel from "@tabler/icons/outline/gavel.svg";
+import Book from "@tabler/icons/outline/book.svg";
+import User from "@tabler/icons/outline/user.svg";
+
+const allCommittees = (
+  await getCollection("committees", ({ data }) => {
+    return import.meta.env.MODE !== "production" || data.draft === false;
+  })
+).sort(
+  (a, b) =>
+    b.data.committeeIteration.valueOf() - a.data.committeeIteration.valueOf()
+);
+
+const latestCommittee = allCommittees[0];
+const featuredMembers =
+  latestCommittee?.data.committeeMembers.slice(0, 4) || [];
+
+const values = [
+  {
+    title: "Innovation",
+    icon: Bulb,
+    description: "Pushing the boundaries of agricultural technology.",
+  },
+  {
+    title: "Sustainability",
+    icon: Leaf,
+    description: "Promoting practices that ensure long-term health.",
+  },
+  {
+    title: "Community",
+    icon: Users,
+    description: "Building a strong network of engineers and farmers.",
+  },
+];
+
+const focusAreas = [
+  {
+    title: "Policy Advocacy",
+    icon: Gavel,
+    content:
+      "Working with government bodies to shape agricultural policies that benefit the nation and the engineering profession.",
+  },
+  {
+    title: "Professional Development",
+    icon: Users,
+    content:
+      "Organizing workshops, trainings, and conferences to enhance the skills and knowledge of our members.",
+  },
+  {
+    title: "Research & Development",
+    icon: Bulb,
+    content:
+      "Promoting and publishing innovative research to solve real-world agricultural challenges in Nepal.",
+  },
+  {
+    title: "Education Support",
+    icon: Book,
+    content:
+      "Collaborating with universities to improve curriculum and support student engineers.",
+  },
+];
+
+const AboutHeroImg =
+  "https://images.unsplash.com/photo-1625246333195-58f21c018a2b?q=80&w=1974&auto=format&fit=crop";
+
+function formatPosition(position: string) {
+  return position
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ");
+}
 ---
 
 <PageLayout
-  title="About us"
-  description="Learn more about our mission, values, and team."
+  title="About Us - NSAE"
+  description="Engineering the Future of Agriculture in Nepal."
 >
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-    tempor incididunt ut labore et dolore magna aliqua. Vitae ultricies leo
-    integer malesuada nunc vel risus commodo viverra. Adipiscing enim eu turpis
-    egestas pretium. Euismod elementum nisi quis eleifend quam adipiscing. In
-    hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat.
-    Netus et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu
-    non diam phasellus vestibulum lorem. Varius sit amet mattis vulputate enim.
-    Habitasse platea dictumst quisque sagittis. Integer quis auctor elit sed
-    vulputate mi. Dictumst quisque sagittis purus sit amet.
-  </p>
+  <section
+    class="relative rounded-2xl flex min-h-[60vh] md:min-h-[75vh] items-center overflow-hidden px-6 py-20 md:px-12 md:py-32 text-white"
+  >
+    <div class="absolute top-32 left-6 md:left-12 z-20 hidden md:block">
+      <span
+        class="font-mono text-xs text-white/60 tracking-widest uppercase vertical-lr"
+      >
+        [ EST. 2014 ]
+      </span>
+    </div>
 
-  <p>
-    Morbi tristique senectus et netus. Id semper risus in hendrerit gravida
-    rutrum quisque non tellus. Habitasse platea dictumst quisque sagittis purus
-    sit amet. Tellus molestie nunc non blandit massa. Cursus vitae congue mauris
-    rhoncus. Accumsan tortor posuere ac ut. Fringilla urna porttitor rhoncus
-    dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-    massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius
-    morbi enim nunc. Bibendum neque egestas congue quisque egestas diam. Cras
-    ornare arcu dui vivamus arcu felis bibendum. Dignissim suspendisse in est
-    ante in nibh mauris. Sed tempus urna et pharetra pharetra massa massa
-    ultricies mi.
-  </p>
+    <div class="relative z-20 flex max-w-4xl flex-col gap-6 md:gap-8 mt-12">
+      <Badge
+        variant="outline"
+        class="w-fit font-mono text-xs uppercase tracking-widest border-white/30 text-white"
+      >
+        Who We Are
+      </Badge>
 
-  <p>
-    Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque.
-    Diam sit amet nisl suscipit. Lacus viverra vitae congue eu consequat ac
-    felis donec. Egestas integer eget aliquet nibh praesent tristique magna sit
-    amet. Eget magna fermentum iaculis eu non diam. In vitae turpis massa sed
-    elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-    dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra.
-    Posuere ac ut consequat semper viverra nam. Laoreet suspendisse interdum
-    consectetur libero id faucibus. Diam phasellus vestibulum lorem sed risus
-    ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-    facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed
-    risus pretium quam vulputate. Viverra suspendisse potenti nullam ac tortor
-    vitae purus faucibus ornare. Fringilla urna porttitor rhoncus dolor purus
-    non. Amet dictum sit amet justo donec enim.
-  </p>
+      <h1
+        class="font-sans text-5xl md:text-7xl lg:text-8xl font-medium leading-[0.9] tracking-tighter"
+      >
+        Engineering the <br />
+        <span class="text-primary-foreground/80">Future of Agriculture</span>
+      </h1>
 
-  <p>
-    Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac
-    ut consequat semper viverra. Tellus mauris a diam maecenas sed enim ut sem
-    viverra. Venenatis urna cursus eget nunc scelerisque viverra mauris in. Arcu
-    ac tortor dignissim convallis aenean et tortor at. Curabitur gravida arcu ac
-    tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-    pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim
-    sit amet. Ut enim blandit volutpat maecenas volutpat blandit aliquam etiam.
-    Id donec ultrices tincidunt arcu. Id cursus metus aliquam eleifend mi.
-  </p>
+      <p
+        class="font-sans text-lg md:text-xl text-white/80 max-w-2xl leading-relaxed"
+      >
+        The Nepal Society of Agricultural Engineers (NSAE) is dedicated to
+        advancing the profession and promoting sustainable agricultural
+        practices across the nation.
+      </p>
+    </div>
 
-  <p>
-    Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus
-    imperdiet. Id porta nibh venenatis cras sed felis eget velit. Ipsum a arcu
-    cursus vitae. Facilisis magna etiam tempor orci eu lobortis elementum.
-    Tincidunt dui ut ornare lectus sit. Quisque non tellus orci ac. Blandit
-    libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed
-    pulvinar proin gravida. Egestas integer eget aliquet nibh praesent tristique
-    magna.
-  </p>
+    <div class="absolute inset-0 z-10">
+      <div
+        class="absolute inset-0 z-20 bg-gradient-to-r from-black/90 via-black/60 to-black/20"
+      >
+      </div>
+      <div class="absolute inset-0 z-10 bg-black/20"></div>
+      <img
+        class="absolute inset-0 h-full w-full object-cover"
+        alt="Agricultural Engineering Field"
+        src={AboutHeroImg}
+      />
+    </div>
+  </section>
+
+  <div class="space-y-24 md:space-y-32 py-24">
+    <section class="px-6 md:px-12">
+      <div
+        class="flex flex-col lg:flex-row justify-between items-start gap-12 lg:gap-24 border-b border-border/50 pb-24"
+      >
+        <div class="flex flex-col gap-8 lg:w-1/2 lg:sticky lg:top-32">
+          <div class="flex items-center gap-4">
+            <Badge
+              class="font-mono text-xs uppercase tracking-widest"
+              size="sm"
+            >
+              ( 01 )
+            </Badge>
+            <span
+              class="font-mono text-xs text-muted-foreground uppercase tracking-widest"
+            >
+              Our Mission
+            </span>
+          </div>
+          <h2
+            class="font-sans text-4xl md:text-6xl font-medium tracking-tighter leading-tight"
+          >
+            Bridging traditional farming with modern engineering.
+          </h2>
+
+          <div class="grid gap-6">
+            {
+              values.map((val) => (
+                <div class="group flex gap-4 p-4 rounded-xl border border-border/50 bg-secondary/20 hover:bg-secondary/40 transition-colors">
+                  <div class="p-2 h-fit rounded-lg bg-primary/10 text-primary">
+                    <val.icon class="size-5" />
+                  </div>
+                  <div>
+                    <h3 class="font-sans font-medium text-lg mb-1">
+                      {val.title}
+                    </h3>
+                    <p class="font-sans text-sm text-muted-foreground leading-relaxed">
+                      {val.description}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <div
+          class="lg:w-1/2 prose prose-lg prose-headings:font-sans prose-p:font-sans dark:prose-invert"
+        >
+          <p class="lead text-xl font-medium text-foreground">
+            Our mission is to unite agricultural engineers under a common
+            umbrella to foster professional growth, ethical standards, and
+            technological advancement.
+          </p>
+          <p>
+            By collaborating with governmental bodies, educational institutions,
+            and the private sector, we strive to influence policies that enhance
+            food security and rural development.
+          </p>
+          <p>
+            We believe that engineering solutions are the key to unlocking
+            Nepal's agricultural potential. From irrigation systems to
+            post-harvest technology, our members are at the forefront of
+            innovation.
+          </p>
+
+          <div class="my-12 not-prose">
+            <div
+              class="bg-primary/5 rounded-3xl p-8 border border-primary/10 relative overflow-hidden"
+            >
+              <Quote
+                class="absolute top-6 left-6 size-10 text-primary/10 rotate-180"
+              />
+              <p
+                class="relative z-10 font-sans text-xl font-medium italic text-center pt-4 pb-2"
+              >
+                "Agriculture is the most healthful, most useful, and most noble
+                employment of man."
+              </p>
+              <p
+                class="font-mono text-xs uppercase tracking-widest text-center text-muted-foreground"
+              >
+                — George Washington
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* --- NEW: STRATEGIC FOCUS SECTION --- */}
+    <section class="px-6 md:px-12">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+      >
+        <div class="space-y-4">
+          <div class="flex items-center gap-4 mb-4">
+            <Badge
+              class="font-mono text-xs uppercase tracking-widest"
+              size="sm"
+            >
+              ( 02 )
+            </Badge>
+            <span
+              class="font-mono text-xs text-muted-foreground uppercase tracking-widest"
+            >
+              What We Do
+            </span>
+          </div>
+          <h2
+            class="font-sans text-4xl md:text-5xl font-medium tracking-tighter text-balance"
+          >
+            Strategic Focus
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {
+          focusAreas.map((area) => (
+            <div class="p-8 rounded-2xl bg-secondary/30 border border-border/50 hover:border-primary/50 transition-colors group">
+              <div class="mb-6 w-12 h-12 rounded-full bg-background border border-border flex items-center justify-center text-muted-foreground group-hover:text-primary group-hover:border-primary/50 transition-colors">
+                <area.icon class="size-6" />
+              </div>
+              <h3 class="font-sans text-2xl font-medium mb-3">{area.title}</h3>
+              <p class="font-sans text-muted-foreground leading-relaxed">
+                {area.content}
+              </p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    {/* --- EXECUTIVE COMMITTEE SECTION (Dynamic) --- */}
+    <section class="px-6 md:px-12">
+      <div
+        class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
+      >
+        <div class="space-y-4">
+          <div class="flex items-center gap-4 mb-4">
+            <Badge
+              class="font-mono text-xs uppercase tracking-widest"
+              size="sm"
+            >
+              ( 03 )
+            </Badge>
+            <span
+              class="font-mono text-xs text-muted-foreground uppercase tracking-widest"
+            >
+              Leadership
+            </span>
+          </div>
+          <h2
+            class="font-sans text-4xl md:text-5xl font-medium tracking-tighter text-balance"
+          >
+            Executive Committee
+          </h2>
+          {
+            latestCommittee && (
+              <p class="font-mono text-sm text-muted-foreground uppercase tracking-widest">
+                Current Iteration: {latestCommittee.data.committeeIteration}
+              </p>
+            )
+          }
+        </div>
+        <Button
+          href={`/past-committee/${latestCommittee?.id}`}
+          variant="ghost"
+          class="hidden md:flex font-mono text-xs uppercase tracking-widest gap-2"
+        >
+          View Full Committee <ArrowRight class="size-4" />
+        </Button>
+      </div>
+
+      {
+        latestCommittee ? (
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredMembers.map((member) => (
+              <div class="relative overflow-hidden rounded-lg shadow-lg group">
+                {member.profileImage ? (
+                  <Image
+                    src={member.profileImage}
+                    inferSize
+                    alt={`Profile picture of ${member.name}`}
+                    class="aspect-3/4 w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                ) : (
+                  <div class="aspect-3/4 w-full bg-secondary flex items-center justify-center" />
+                )}
+
+                <div class="absolute bottom-4 right-4 bg-black/70 p-3 rounded-md text-white">
+                  <span class="block text-sm font-semibold">{member.name}</span>
+                  <span class="block text-xs">
+                    {formatPosition(member.position)}
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div class="text-center py-12 border border-dashed border-border rounded-xl">
+            <p class="text-muted-foreground">
+              Committee information unavailable.
+            </p>
+          </div>
+        )
+      }
+
+      <div class="mt-8 md:hidden flex justify-center">
+        <Button
+          href={`/past-committee/${latestCommittee?.id}`}
+          variant="outline"
+          class="font-mono text-xs uppercase tracking-widest"
+        >
+          View Full Committee
+        </Button>
+      </div>
+    </section>
+
+    <section class="px-6 md:px-12 pb-12">
+      <div
+        class="bg-primary text-primary-foreground rounded-3xl p-8 md:p-16 text-center flex flex-col items-center gap-8 relative overflow-hidden"
+      >
+        <div class="relative z-10 flex flex-col items-center gap-6">
+          <h2
+            class="font-sans text-3xl md:text-5xl font-medium tracking-tighter max-w-2xl"
+          >
+            Ready to shape the future of agriculture?
+          </h2>
+          <p class="text-primary-foreground/80 max-w-xl font-sans text-lg">
+            Join a community of innovators, researchers, and engineers working
+            towards a sustainable future.
+          </p>
+          <Button
+            href="/contact"
+            variant="secondary"
+            class="rounded-full px-8 py-6 font-sans font-medium text-lg"
+          >
+            Join the Collective
+          </Button>
+        </div>
+
+        <div
+          class="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-white/10 to-transparent pointer-events-none"
+        >
+        </div>
+      </div>
+    </section>
+  </div>
 </PageLayout>

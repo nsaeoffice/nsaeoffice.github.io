@@ -1,0 +1,282 @@
+---
+import ArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import Plus from "@tabler/icons/outline/plus.svg";
+import { Image } from "astro:assets";
+import Badge from "../astro/Badge.astro";
+
+import LifeMemberImg from "src/assets/mission-placeholder-1.avif";
+import GeneralMemberImg from "src/assets/mission-placeholder-3.avif";
+---
+
+<div
+  id="cursor"
+  class="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:block opacity-0 transition-opacity duration-300"
+>
+</div>
+
+<section
+  class="relative overflow-hidden min-h-screen bg-background text-foreground cursor-none"
+  id="membership-container"
+>
+  <div class="border-b border-border pt-32 pb-10 px-6 md:px-12 relative">
+    <div class="overflow-hidden">
+      <h1
+        class="text-[12vw] leading-[0.85] font-black uppercase tracking-tighter reveal-text text-foreground"
+      >
+        The
+      </h1>
+    </div>
+    <div class="overflow-hidden flex items-center gap-4 md:gap-12">
+      <h1
+        class="text-[12vw] leading-[0.85] font-black uppercase tracking-tighter text-transparent stroke-text reveal-text"
+      >
+        Circle
+      </h1>
+      <p
+        class="hidden md:block max-w-sm text-sm md:text-base text-muted-foreground font-mono mt-4 leading-relaxed reveal-opacity"
+      >
+        [ EST. 2024 ] <br />
+        We are an enclave of thinkers and doers. Select your level of access to the
+        collective.
+      </p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-2 min-h-screen relative">
+    <div
+      class="hidden lg:block absolute left-1/2 top-0 bottom-0 w-[1px] bg-border z-10 origin-top scale-y-0"
+      id="center-line"
+    >
+    </div>
+
+    <div
+      class="group relative border-b border-border lg:border-b-0 p-6 md:p-12 flex flex-col justify-between h-[80vh] lg:h-auto hover-trigger bg-background"
+      data-cursor-text="JOIN YEARLY"
+    >
+      <div
+        class="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-700 ease-out pointer-events-none"
+      >
+        <Image
+          src={GeneralMemberImg}
+          alt=""
+          class="w-full h-full object-cover grayscale"
+        />
+      </div>
+
+      <div class="relative z-10">
+        <div class="flex justify-between items-center mb-20">
+          <span class="font-mono text-xs md:text-sm text-muted-foreground"
+            >( 01 )</span
+          >
+          <Badge
+            class="font-mono text-xs md:text-sm border px-3 py-1 rounded-full"
+          >
+            ANNUAL
+          </Badge>
+        </div>
+
+        <h2
+          class="text-5xl md:text-7xl font-medium tracking-tight mb-6 border-b border-border pb-6"
+        >
+          General<br />Membership
+        </h2>
+
+        <ul class="space-y-4 font-mono text-sm text-muted-foreground">
+          <li class="flex items-center gap-3">
+            <Plus class="w-3 h-3" /> FULL VOTING RIGHTS
+          </li>
+          <li class="flex items-center gap-3">
+            <Plus class="w-3 h-3" /> QUARTERLY DIGEST
+          </li>
+          <li class="flex items-center gap-3">
+            <Plus class="w-3 h-3" /> COMMUNITY ACCESS
+          </li>
+        </ul>
+      </div>
+
+      <div class="relative z-10 pt-12">
+        <a
+          href="#"
+          class="inline-flex items-center gap-4 text-lg uppercase tracking-widest hover:gap-8 transition-all duration-500 text-foreground group-hover:text-primary"
+        >
+          Initiate <ArrowRight class="w-5 h-5" />
+        </a>
+      </div>
+    </div>
+
+    <div
+      class="group relative p-0 overflow-hidden h-[80vh] lg:h-auto hover-trigger bg-black"
+      data-cursor-text="BECOME LEGEND"
+    >
+      <div class="absolute inset-0 w-full h-full overflow-hidden">
+        <Image
+          src={LifeMemberImg}
+          alt="Life Member"
+          width={1200}
+          class="w-full h-full object-cover opacity-60 transition-transform duration-1000 ease-[0.25,1,0.5,1] group-hover:scale-110 grayscale group-hover:grayscale-0"
+        />
+        <div
+          class="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-700"
+        >
+        </div>
+      </div>
+
+      <div
+        class="relative z-10 h-full flex flex-col justify-between p-6 md:p-12 text-white"
+      >
+        <div class="flex justify-between items-center">
+          <span
+            class="font-mono text-xs md:text-sm text-white/80 mix-blend-difference"
+          >
+            ( 02 )
+          </span>
+          <span
+            class="font-mono text-xs md:text-sm bg-white text-black px-3 py-1 rounded-full font-bold border-none"
+          >
+            LIFETIME
+          </span>
+        </div>
+
+        <div
+          class="translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-out"
+        >
+          <h2
+            class="text-5xl md:text-7xl font-medium tracking-tight mb-2 text-white mix-blend-difference"
+          >
+            Life Membership
+          </h2>
+          <p
+            class="text-lg text-gray-300 max-w-md leading-relaxed mix-blend-difference"
+          >
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus
+            ratione iste ex perferendis laboriosam enim numquam soluta magni.
+          </p>
+        </div>
+
+        <div class="flex justify-end">
+          <div
+            class="w-16 h-16 rounded-full bg-white flex items-center justify-center text-black scale-0 group-hover:scale-100 transition-transform duration-500 ease-back-out"
+          >
+            <ArrowRight class="w-6 h-6 -rotate-45" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="border-t border-border py-6 overflow-hidden whitespace-nowrap flex bg-background"
+  >
+    <div
+      class="animate-marquee flex gap-12 items-center text-sm font-mono text-muted-foreground uppercase"
+    >
+      <span>Legacy Defined</span>
+      <span class="w-2 h-2 bg-muted-foreground/30 rounded-full"></span>
+      <span>Uncompromising Quality</span>
+      <span class="w-2 h-2 bg-muted-foreground/30 rounded-full"></span>
+      <span>Global Community</span>
+      <span class="w-2 h-2 bg-muted-foreground/30 rounded-full"></span>
+      <span>Legacy Defined</span>
+      <span class="w-2 h-2 bg-muted-foreground/30 rounded-full"></span>
+      <span>Uncompromising Quality</span>
+      <span class="w-2 h-2 bg-muted-foreground/30 rounded-full"></span>
+      <span>Global Community</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stroke-text {
+    -webkit-text-stroke: 1px black;
+    color: transparent;
+  }
+  :global(.dark) .stroke-text {
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+  }
+  .ease-back-out {
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+</style>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  if (typeof window !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const cursor = document.getElementById("cursor");
+    const section = document.getElementById("membership-container");
+    const triggers = document.querySelectorAll(".hover-trigger");
+
+    window.addEventListener("mousemove", (e) => {
+      if (cursor) {
+        gsap.to(cursor, {
+          x: e.clientX,
+          y: e.clientY,
+          duration: 0.1,
+          ease: "power2.out",
+          overwrite: "auto",
+        });
+      }
+    });
+
+    if (section && cursor) {
+      section.addEventListener("mouseenter", () => {
+        gsap.to(cursor, { autoAlpha: 1, duration: 0.2, ease: "power2.out" });
+      });
+
+      section.addEventListener("mouseleave", () => {
+        gsap.to(cursor, { autoAlpha: 0, duration: 0.2, ease: "power2.out" });
+      });
+    }
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener("mouseenter", () => {
+        if (cursor) gsap.to(cursor, { scale: 4, duration: 0.3 });
+      });
+      trigger.addEventListener("mouseleave", () => {
+        if (cursor) gsap.to(cursor, { scale: 1, duration: 0.3 });
+      });
+    });
+
+    gsap.set(cursor, { xPercent: -50, yPercent: -50 });
+
+    const tl = gsap.timeline();
+    tl.from(".reveal-text", {
+      y: "120%",
+      duration: 1.2,
+      stagger: 0.1,
+      ease: "power4.out",
+    })
+      .from(
+        ".reveal-opacity",
+        {
+          opacity: 0,
+          duration: 1,
+          ease: "power2.out",
+        },
+        "-=0.8"
+      )
+      .to(
+        "#center-line",
+        {
+          scaleY: 1,
+          duration: 1.2,
+          ease: "power3.inOut",
+        },
+        "-=0.5"
+      );
+  }
+</script>

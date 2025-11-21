@@ -2,7 +2,11 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import PageLayout from "@/layouts/PageLayout.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../../consts";
+import Badge from "@/components/astro/Badge.astro";
+import { SITE_TITLE } from "../../consts";
+
+import ArrowLeft from "@tabler/icons/outline/arrow-left.svg";
+import UsersGroup from "@tabler/icons/outline/users-group.svg";
 
 export async function getStaticPaths() {
   const committees = await getCollection("committees", ({ data }) => {
@@ -28,9 +32,41 @@ function formatPosition(position: string) {
 }
 ---
 
-<PageLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <main class="container mx-auto p-8">
-    <h1 class="text-4xl font-bold mb-8 text-center">{committee.data.title}</h1>
+<PageLayout
+  title={`${committee.data.title} | ${SITE_TITLE}`}
+  description={`Meet the members of the ${committee.data.title}`}
+>
+  <article class="py-8 space-y-10">
+    <a
+      href="/past-committee/page/1"
+      class="px-4 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors mb-4"
+    >
+      <ArrowLeft class="size-4" /> Back to Committees
+    </a>
+    <header class="flex flex-col text-center gap-6 mb-16">
+      <div class="space-y-4 items-center">
+        <Badge
+          variant={"secondary"}
+          size={"sm"}
+          class="font-mono text-xs uppercase tracking-widest"
+        >
+          Committee
+        </Badge>
+        <h1
+          class="font-sans text-4xl md:text-6xl font-medium tracking-tighter text-balance"
+        >
+          {committee.data.title}
+        </h1>
+        <div
+          class="flex items-center justify-center gap-2 text-muted-foreground"
+        >
+          <UsersGroup class="size-5" />
+          <span class="font-mono text-xs uppercase tracking-widest">
+            {members.length} Members
+          </span>
+        </div>
+      </div>
+    </header>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
       {
@@ -57,5 +93,5 @@ function formatPosition(position: string) {
         ))
       }
     </div>
-  </main>
+  </article>
 </PageLayout>

@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
+import ArrowLeft from "@tabler/icons/outline/arrow-left.svg";
 
 import FormattedDate from "../components/FormattedDate.astro";
 import Prose from "@/components/astro/Prose.astro";
@@ -28,24 +29,35 @@ const categoriesData = categories ? await getEntries(categories) : null;
 ---
 
 <PageLayout title={title} description={description ?? title}>
-  <article class="container py-8 space-y-8">
-    <header class="space-y-2 text-center border-b pb-4">
-      <h1
-        class="text-3xl md:text-4xl font-bold tracking-tight first-letter:capitalize"
+  <article class="py-8 space-y-10">
+    <header class="space-y-8 border-b border-border pb-10">
+      <a
+        href="/blog/page/1"
+        class="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors px-4"
       >
-        {title}
-      </h1>
-      {
-        subtitle && (
-          <p class="text-muted-foreground first-letter:capitalize">
-            {subtitle}
-          </p>
-        )
-      }
+        <ArrowLeft class="size-4" /> Back to All Blogs
+      </a>
+      <div class="space-y-4 text-center">
+        <h1
+          class="font-sans text-3xl md:text-5xl font-medium tracking-tighter first-letter:capitalize"
+        >
+          {title}
+        </h1>
+        {
+          subtitle && (
+            <p class="font-sans text-lg text-muted-foreground leading-relaxed first-letter:capitalize max-w-3xl mx-auto">
+              {subtitle}
+            </p>
+          )
+        }
+      </div>
+
       <div class="flex flex-row justify-around items-center text-xs">
         {categoriesData ? <Categories categories={categoriesData} /> : <div />}
 
-        <span class="text-xs text-muted-foreground capitalize">
+        <span
+          class="font-mono text-xs text-muted-foreground uppercase tracking-wider border-l border-border/50 pl-6"
+        >
           <FormattedDate date={pubDate} />
         </span>
       </div>
@@ -63,22 +75,24 @@ const categoriesData = categories ? await getEntries(categories) : null;
         </div>
       )
     }
-    <div class="prose max-w-6xl mx-auto dark:prose-invert">
+
+    <div class="prose max-w-7xl mx-auto dark:prose-invert">
       <slot />
     </div>
 
     {
       relatedPosts && relatedPosts.length > 0 && (
-        <div class="border-t pt-4 space-y-8">
-          <div class="flex flex-col text-center">
-            <span class="capitalize text-xl font-semibold">
+        <div class="border-t border-border/50 pt-12 space-y-8">
+          <div class="flex flex-col text-center gap-2">
+            <h3 class="font-sans text-2xl font-medium tracking-tight">
               If You Liked This...
-            </span>
-            <span class="text-sm text-muted-foreground">
+            </h3>
+            <p class="font-sans text-muted-foreground">
               Explore similar topics
-            </span>
+            </p>
           </div>
-          dfdfd
+          {/* Placeholder for related posts grid */}
+          <div class="grid gap-8">dfdfd</div>
         </div>
       )
     }

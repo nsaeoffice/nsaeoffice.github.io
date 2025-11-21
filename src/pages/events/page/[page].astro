@@ -1,7 +1,7 @@
 ---
 import Badge from "@/components/astro/Badge.astro";
 import ClickableCard from "@/components/astro/Card/ClickableCard.astro";
-import { SITE_DESCRIPTION, SITE_TITLE, PAGE_SIZE } from "@/consts";
+import { PAGE_SIZE } from "@/consts";
 import PageLayout from "@/layouts/PageLayout.astro";
 import EventCard from "@/components/astro/Card/EventCard.astro";
 import Pagination from "@/components/astro/Pagination.astro";
@@ -34,9 +34,17 @@ const pageDescription =
 ---
 
 <PageLayout title={pageTitle} description={pageDescription}>
-  <header class="flex flex-col items-center justify-center py-6">
-    <Badge variant={"secondary"} size={"sm"} class="capitalize">Events</Badge>
-    <h1 class="text-5xl md:text-6xl font-medium pt-4">
+  <header class="flex flex-col items-center justify-center py-16">
+    <Badge
+      variant={"secondary"}
+      size={"sm"}
+      class="font-mono uppercase tracking-widest text-xs mb-3 border border-border/50"
+    >
+      Events Archive
+    </Badge>
+    <h1
+      class="font-sans text-5xl md:text-7xl font-medium tracking-tighter pt-4 text-center max-w-4xl leading-tight"
+    >
       Explore our latest events
     </h1>
   </header>
@@ -47,7 +55,7 @@ const pageDescription =
           return (
             <ClickableCard
               href={`/events/${event.id}/`}
-              class="group bg-secondary text-secondary-foreground rounded-xl border border-transparent hover:border-border/50 transition-all overflow-hidden"
+              class="group bg-secondary text-secondary-foreground rounded-2xl border border-border/50 hover:border-primary/50 transition-all overflow-hidden"
             >
               <EventCard {...event} />
             </ClickableCard>
@@ -55,8 +63,11 @@ const pageDescription =
         })
       }
     </div>
-    <div class="flex justify-center mt-8">
-      <Pagination url={page.url} />
+    <div class="flex justify-center mt-16">
+      <Pagination
+        url={page.url}
+        class="font-mono text-sm uppercase tracking-widest"
+      />
     </div>
   </section>
 </PageLayout>

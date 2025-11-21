@@ -10,101 +10,170 @@ import BrandX from "@tabler/icons/outline/brand-x.svg";
 import BrandFacebook from "@tabler/icons/outline/brand-facebook.svg";
 import BrandYoutube from "@tabler/icons/outline/brand-youtube.svg";
 import BrandBluesky from "@tabler/icons/outline/brand-bluesky.svg";
+import ArrowUpRight from "@tabler/icons/outline/arrow-up-right.svg";
 
 const contactInfo = (await getCollection("contacts"))[0];
 const { data } = contactInfo;
 const { socials } = data;
+const socialIcons: Record<string, any> = {
+  linkedin: BrandLinkedin,
+  twitter: BrandX,
+  x: BrandX,
+  facebook: BrandFacebook,
+  youtube: BrandYoutube,
+  bluesky: BrandBluesky,
+};
 ---
 
 <PageLayout
   title="Contact Us - NSAE"
   description="Have a question or a project in mind? - NSAE"
 >
-  <header class="flex flex-col items-center justify-center py-6">
-    <Badge variant={"secondary"} size={"sm"} class="first-letter:capitalize"
-      >Contact us</Badge
+  <header
+    class="flex flex-col items-center justify-center py-16 md:py-24 text-center px-4"
+  >
+    <Badge
+      variant={"secondary"}
+      size={"sm"}
+      class="font-mono text-xs uppercase tracking-widest mb-6"
     >
-    <h1 class="text-5xl md:text-6xl font-medium pt-4 pb-1">Get in touch</h1>
-    <p class="text-muted-foreground text-center">
+      Contact us
+    </Badge>
+    <h1
+      class="font-sans text-5xl md:text-7xl font-medium tracking-tighter pb-4"
+    >
+      Get in touch
+    </h1>
+    <p
+      class="font-sans text-xl text-muted-foreground max-w-2xl leading-relaxed"
+    >
       Have a question or a project in mind? We'd love to hear from you.
     </p>
   </header>
 
-  <section
-    class="py-12 bg-background text-foreground max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 min-h-40"
-  >
+  <section class="pb-24 px-4 grid grid-cols-1 lg:grid-cols-3 gap-6">
     <div
-      class="col-span-1 rounded-2xl p-6 bg-secondary text-secondary-foreground flex flex-col gap-4"
+      class="col-span-1 rounded-2xl p-8 bg-secondary/30 border border-border/50 flex flex-col justify-between gap-12 hover:bg-secondary/50 transition-colors"
     >
-      <span class="flex flex-row gap-4 items-center">
-        <Mail class="w-6 h-6" />
-        <h3 class="text-2xl font-semibold">Email</h3>
-      </span>
-      {
-        data.emails && data.emails.length > 0 && (
-          <div>
-            {data.emails.map((email) => (
-              <a href={`mailto:${email}`} class="block text-lg hover:underline">
-                {email}
-              </a>
-            ))}
-          </div>
-        )
-      }
-      <span class="text-secondary-foreground/80 mt-auto">
+      <div class="space-y-6">
+        <span
+          class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground"
+        >
+          <Mail class="size-4" /> Email
+        </span>
+        {
+          data.emails && data.emails.length > 0 && (
+            <div class="flex flex-col gap-2">
+              {data.emails.map((email) => (
+                <a
+                  href={`mailto:${email}`}
+                  class="font-sans text-2xl  font-medium tracking-tight hover:text-primary transition-colors block w-fit"
+                >
+                  {email}
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+      <span class="font-sans text-sm text-muted-foreground">
         Reach out via email with any questions before our call!
       </span>
     </div>
 
+    {/* Phone Card */}
     <div
-      class="col-span-1 rounded-2xl p-6 bg-secondary text-secondary-foreground flex flex-col gap-4"
+      class="col-span-1 rounded-2xl p-8 bg-secondary/30 border border-border/50 flex flex-col justify-between gap-12 hover:bg-secondary/50 transition-colors"
     >
-      <span class="flex flex-row gap-4 items-center">
-        <Phone class="w-6 h-6" />
-        <h3 class="text-2xl font-semibold">Phone</h3>
-      </span>
-      {
-        data.phoneNumbers && data.phoneNumbers.length > 0 && (
-          <div>
-            {data.phoneNumbers.map((phone) => (
-              <a href={`tel:${phone}`} class="block text-lg hover:underline">
-                {phone}
-              </a>
-            ))}
-          </div>
-        )
-      }
-      <span class="text-secondary-foreground/80 mt-auto">
+      <div class="space-y-6">
+        <span
+          class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground"
+        >
+          <Phone class="size-4" /> Phone
+        </span>
+        {
+          data.phoneNumbers && data.phoneNumbers.length > 0 && (
+            <div class="flex flex-col gap-2">
+              {data.phoneNumbers.map((phone) => (
+                <a
+                  href={`tel:${phone}`}
+                  class="font-sans text-2xl  font-medium tracking-tight hover:text-primary transition-colors block w-fit"
+                >
+                  {phone}
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+      <span class="font-sans text-sm text-muted-foreground">
         You can reach out to us by phone to discuss your needs.
       </span>
     </div>
 
     <div
-      class="col-span-1 rounded-2xl p-6 bg-secondary text-secondary-foreground flex flex-col gap-4"
+      class="col-span-1 rounded-2xl p-8 bg-secondary/30 border border-border/50 flex flex-col justify-between gap-12 hover:bg-secondary/50 transition-colors"
     >
-      <span class="flex flex-row gap-4 items-center">
-        <Map class="w-6 h-6" />
-        <h3 class="text-2xl font-semibold">Visit us</h3>
-      </span>
-      <div class="text-lg">
-        {
-          data.addressLink ? (
-            <a
-              href={data.addressLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="hover:underline"
-            >
-              {data.address ?? "View on map"}
-            </a>
-          ) : (
-            <span>{data.address ?? "Address not provided"}</span>
-          )
-        }
+      <div class="space-y-6">
+        <span
+          class="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-muted-foreground"
+        >
+          <Map class="size-4" /> Visit us
+        </span>
+        <div class="font-sans text-2xl font-medium tracking-tight">
+          {
+            data.addressLink ? (
+              <a
+                href={data.addressLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-primary transition-colors flex items-start gap-2 group"
+              >
+                {data.address ?? "View on map"}
+                <ArrowUpRight class="size-6 text-muted-foreground group-hover:text-primary transition-colors mt-1 shrink-0" />
+              </a>
+            ) : (
+              <span>{data.address ?? "Address not provided"}</span>
+            )
+          }
+        </div>
       </div>
-      <span class="text-secondary-foreground/80 mt-auto">
+      <span class="font-sans text-sm text-muted-foreground">
         We are conveniently located near public transport and parking.
       </span>
     </div>
+
+    {
+      socials && (
+        <div class="col-span-1 lg:col-span-3 rounded-2xl p-8 bg-secondary/30 border border-border/50 flex flex-col md:flex-row items-center justify-between gap-6 mt-4">
+          <span class="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+            Follow our socials
+          </span>
+          <div class="flex flex-wrap justify-center gap-4">
+            {Object.entries(socials).map(([platform, socialData]) => {
+              if (!socialData || !socialData.link) return null;
+
+              const Icon = socialIcons[platform.toLowerCase()];
+              return (
+                <a
+                  href={socialData.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="p-3 rounded-full bg-background border border-border/50 hover:border-primary hover:text-primary transition-all duration-300"
+                  aria-label={`Follow on ${platform}`}
+                  title={socialData.handle ? `@${socialData.handle}` : platform}
+                >
+                  {Icon ? (
+                    <Icon class="size-5" />
+                  ) : (
+                    <span class="capitalize font-mono text-xs">{platform}</span>
+                  )}
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      )
+    }
   </section>
 </PageLayout>

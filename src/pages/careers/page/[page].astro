@@ -35,73 +35,94 @@ const pageDescription = "Your Next Chapter Starts Here";
 ---
 
 <PageLayout title={pageTitle} description={pageDescription}>
-  <section class="min-h-40 flex flex-col items-center justify-center gap-4">
-    <Badge variant={"secondary"} size={"sm"}>Careers</Badge>
-    <h1 class="text-6xl font-medium text-center">
+  <section
+    class="min-h-40 flex flex-col items-center justify-center gap-4 py-16 md:py-24 px-6"
+  >
+    <Badge
+      variant={"secondary"}
+      size={"sm"}
+      class="font-mono uppercase tracking-widest text-xs mb-3 border border-border/50"
+    >
+      Careers
+    </Badge>
+    <h1
+      class="font-sans text-5xl md:text-7xl font-medium text-center tracking-tighter leading-tight max-w-4xl"
+    >
       Your Next Chapter Starts Here
     </h1>
   </section>
 
-  <section class="space-y-4 mb-12">
-    <h1 class="mb-6 text-3xl">Open Positions</h1>
-    {
-      page.data.map((vacancy) => (
-        <ClickableCard
-          class="group relative block w-full rounded-lg border border-border bg-secondary p-5 text-secondary-foreground shadow-sm transition-all duration-300 hover:border-primary hover:bg-accent hover:text-accent-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          href={`/careers/${vacancy.id}/`}
-        >
-          <div class="flex flex-col gap-2">
-            <div class="flex items-center justify-between">
-              <span class="text-sm font-medium text-primary">
-                {vacancy.data.company?.name ?? "In-house"}
-              </span>
-              <Badge
-                size={"xs"}
-                variant={
-                  vacancy.data.status === "closed" ? "destructive" : "default"
-                }
-              >
-                {vacancy.data.status === "closed"
-                  ? "Closed"
-                  : vacancy.data.type}
-              </Badge>
-            </div>
-
-            <h3 class="text-xl font-bold  group-hover:underline">
-              {vacancy.data.title}
-            </h3>
-
-            <div class="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 text-sm text-muted-foreground">
-              {vacancy.data.closingDate && (
-                <span class="flex items-center gap-1.5">
-                  <CalendarWeek class={"size-4"} />
-                  Closes:{" "}
-                  {vacancy.data.closingDate.toLocaleDateString(undefined, {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
+  <section class="space-y-6 mb-24">
+    <h1
+      class="font-sans text-xl md:text-2xl font-medium mb-6 uppercase tracking-wider border-b border-border/50 pb-2"
+    >
+      Open Positions
+    </h1>
+    <div class="space-y-4">
+      {
+        page.data.map((vacancy) => (
+          <ClickableCard
+            class="group relative block w-full rounded-xl border border-border/50 bg-secondary p-6 text-secondary-foreground shadow-sm transition-all duration-300 hover:border-primary/50 hover:bg-secondary/70 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            href={`/careers/${vacancy.id}/`}
+          >
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <span class="font-sans text-sm font-medium text-primary">
+                  {vacancy.data.company?.name ?? "In-house"}
                 </span>
-              )}
+                <Badge
+                  size={"xs"}
+                  variant={
+                    vacancy.data.status === "closed" ? "destructive" : "default"
+                  }
+                  class="font-mono text-xs uppercase tracking-widest"
+                >
+                  {vacancy.data.status === "closed"
+                    ? "Closed"
+                    : vacancy.data.type}
+                </Badge>
+              </div>
+
+              <h3 class="font-sans text-2xl font-bold group-hover:underline leading-snug">
+                {vacancy.data.title}
+              </h3>
+
+              <div class="flex flex-wrap items-center gap-x-4 gap-y-1 pt-1 font-mono text-sm text-muted-foreground/80">
+                {vacancy.data.closingDate && (
+                  <span class="flex items-center gap-1.5">
+                    <CalendarWeek class={"size-4 text-primary/70"} />
+                    Closes:{" "}
+                    {vacancy.data.closingDate.toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}
+                  </span>
+                )}
+              </div>
+
+              <div class="flex flex-row items-center justify-between mt-4">
+                <span class="flex items-center gap-1.5 font-mono text-sm uppercase tracking-wider">
+                  <MapPin class="size-4 text-primary/70" />
+                  {vacancy.data.location}
+                </span>
+                <a
+                  class="font-mono text-xs uppercase tracking-widest flex flex-row gap-2 items-center hover:text-primary transition-colors"
+                  href={`/careers/${vacancy.id}/`}
+                >
+                  Learn more <ArrowNarrowRight class="w-4 h-4" />
+                </a>
+              </div>
             </div>
-            <div class="flex flex-row items-center justify-between mt-auto">
-              <span class="flex items-center gap-1.5">
-                <MapPin class="size-4" />
-                {vacancy.data.location}
-              </span>
-              <a
-                class="text-sm font-medium flex flex-row gap-2 items-center hover:underline"
-                href={`/careers/${vacancy.id}/`}
-              >
-                Learn more <ArrowNarrowRight class="w-4 h-4" />
-              </a>
-            </div>
-          </div>
-        </ClickableCard>
-      ))
-    }
-    <div class="flex justify-center mt-8">
-      <Pagination url={page.url} />
+          </ClickableCard>
+        ))
+      }
+    </div>
+    <div class="flex justify-center mt-16">
+      <Pagination
+        url={page.url}
+        class="font-mono text-sm uppercase tracking-widest"
+      />
     </div>
   </section>
 </PageLayout>
