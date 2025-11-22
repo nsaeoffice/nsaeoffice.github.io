@@ -1,66 +1,70 @@
 ---
-title: "Data Scientist"
+title: "Agricultural Engineer"
 type: "Contract"
 status: "open"
-postedDate: 2025-11-15
-closingDate: 2025-11-20
+postedDate: 2025-11-19
+closingDate: 2025-11-30
 company:
-  name: "DataCorp Inc."
+  name: "Karma Group of Companies"
   logo: "https://datacorp.example.com"
-  website: "https://datacorp.example.com"
-description: "DataCorp is seeking a contract data scientist..."
+  website: "https://www.facebook.com/photo/?fbid=1383065273605985&set=a.791878072724711"
+description: "DataCorp is seeking an Agricultural Engineer.."
 ---
 
-## 📊 About the Role
+<!--## 📊 About the Role
 
 DataCorp Inc. is looking for a highly skilled **Data Scientist (Contract)** to support our analytics and machine learning initiatives.  
 You will work closely with product, engineering, and research teams to develop data-driven solutions that improve customer experience and operational efficiency.
 
----
+--->
 
 ## 🔧 Responsibilities
 
-- Analyze large datasets to extract insights and business-critical trends
-- Build, validate, and optimize machine learning models
-- Develop automated data pipelines and scalable analytical solutions
-- Collaborate with engineering teams to productionize ML workloads
-- Communicate results clearly to both technical and non-technical stakeholders
-- Maintain documentation, reproducibility workflows, and model monitoring practices
+- Ensure good operation of the service management department
+- Formulate and implement a customer service plan
+- Establish, maintain, and strengthen contact with terminal users
+- Timely understanding of user operation problems and feedback to the manufacturer
+- Improve team service operation standard
+- Plan and organize internal and external service training
+- Plan and construct service and spare parts network
+---
+
+## 🧠 Requirments
+
+- Master’s degree in Agriculture Engineering with specialization in Farm Machinery
+- Strong command in mechanical engineering is preferable
+- Minimum of 3 years of relevant work experience
+- Good experience in machinery maintenance
+- Structured knowledge of agriculture machinery and automobiles
+- Smart methods for identification and solution for common faults of agriculture machinery
+- Good skill in troubleshooting agriculture machinery and spare parts
+- Expertise in team management
+- Responsible, flexible, and proper interaction with terminal users
 
 ---
 
-## 🧠 Required Qualifications
-
-- 3+ years of experience as a Data Scientist, ML Engineer, or similar role
-- Strong proficiency in **Python**, **SQL**, and data-science libraries (Pandas, NumPy, Sci-Kit Learn, etc.)
-- Experience with one or more cloud platforms (AWS, GCP, Azure)
-- Solid understanding of statistics, model evaluation, and experimental design
-- Ability to work independently and deliver high-quality results on tight deadlines
-
----
-
-## ⭐ Preferred Qualifications
+<!-- ## ⭐ Preferred Qualifications
 
 - Experience with deep learning frameworks (PyTorch/TensorFlow)
 - Familiarity with MLOps tools (MLflow, Airflow, Kubeflow)
 - Background in data visualization (Tableau, Power BI, Plotly)
 - Experience in forecasting, NLP, or recommendation systems
 
----
+--->
 
-## 💼 Contract Details
+<!-- ## 💼 Contract Details
 
 - **Type:** Contract
-- **Duration:** 3–6 months (with possible extension)
-- **Location:** Remote (Global)
-- **Hours:** Full-time or part-time flexible
+- **Duration:** Not mentioned
+- **Location:** Kathmandu
+- **Hours:** Full-time
 - **Compensation:** Competitive, based on experience
 
----
+--->
 
 ## 🚀 How to Apply
 
-Interested candidates may apply through the DataCorp website:  
-👉 **<https://datacorp.example.com>**
+Interested candidates may apply to their email:  
+👉 **<vacancy@karmagroups.com>**
 
-Make sure to include your resume, portfolio, and any relevant project links (GitHub, Kaggle, publications).
+Make sure to include your resume, motivation letter and passport size photograph.
