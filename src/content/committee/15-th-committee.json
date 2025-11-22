@@ -1,52 +1,62 @@
 {
-  "title": "15th Executive Committee (2024-2025)",
-  "committeeIteration": 15,
+  "title": "12th Executive Committee (2024-2025)",
+  "committeeIteration": 12,
   "committeeMembers": [
     {
       "position": "president",
-      "name": "Dr. Ramesh Sharma",
+      "name": "Dr. Jeet Bahadur Chand",
       "prefix": ["dr"],
-      "profileImage": "https://i.pravatar.cc/1001",
+      "profileImage": "../../assets/jeet_chand.png",
       "portfolio": "https://example.com/portfolio/ramesh",
       "neaRegNo": "123-A"
     },
     {
       "position": "vice-president",
-      "name": "Er. Sita Poudel",
+      "name": "Dr. Anand Mishra",
       "prefix": ["er"],
-      "profileImage": "https://i.pravatar.cc/1000"
+      "profileImage": "../../assets/anand_mishra.png"
     },
     {
       "position": "secretary",
-      "name": "Mr. Hari Adhikari",
+      "name": "Mr. Subash Adhikari",
       "prefix": ["mr"],
-      "necRegNo": "456-B"
+      "necRegNo": "456-B",
+      "profileImage": "../../assets/subash_adhikari.png"
     },
     {
       "position": "joint-secretary",
-      "name": "Ms. Gita Thapa",
-      "prefix": ["ms"]
+      "name": "Mr. Sameer Shrestha",
+      "prefix": ["ms"],
+      "profileImage": "../../assets/sameer_shrestha.png"
     },
     {
       "position": "treasurer",
-      "name": "Er. Bishnu Karki",
-      "prefix": ["er"]
+      "name": "Er. Sandesh Rai",
+      "prefix": ["er"],
+      "profileImage": "../../assets/sandesh_rai.png"
     },
     {
       "position": "member",
-      "name": "Mr. Anil Shrestha",
-      "prefix": ["mr"]
+      "name": "Dr. Shiv Kumar Jha",
+      "prefix": ["mr"],
+      "profileImage": "../../assets/shiv_kumar_jha.png"
     },
     {
       "position": "member",
-      "name": "Ms. Manju Gurung",
+      "name": "Ms. Sangita Shrestha",
       "prefix": ["ms"],
-      "profileImage": "https://i.pravatar.cc/1003"
+      "profileImage": "../../assets/sangita_shrestha.png"
+    },
+    {
+      "position": "member",
+      "name": "Mr. Suraj Thapa",
+      "prefix": ["mr"],
+      "profileImage": "../../assets/suraj_thapa.jpg"
     },
     {
       "position": "corporate-member",
-      "name": "TechCorp Solutions",
-      "profileImage": "https://i.pravatar.cc/1050"
+      "name": "NAMEA",
+      "profileImage": "../../assets/namea_logo.png"
     }
   ]
 }
